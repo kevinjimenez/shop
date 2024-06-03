@@ -11,6 +11,7 @@ import { routes } from './app.routes';
 import { errorResponseInterceptor } from './core/interceptors/error-response.interceptor';
 import { loadingInterceptor } from './core/interceptors/loading.interceptor';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -21,6 +22,6 @@ export const appConfig: ApplicationConfig = {
     ),
     provideRouter(routes, withHashLocation()),
     importProvidersFrom(),
-    provideAnimations(),
+    provideAnimations(), provideAnimationsAsync(),
   ],
 };

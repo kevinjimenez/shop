@@ -3,7 +3,9 @@
     class="w-full md:w-1/2 flex items-center justify-center bg-green-300">
     <article
       class="flex flex-col items-center justify-center w-full sm:w-96 bg-orange-300 p-5 mx-3 md:mx-0 min-w-[20rem] rounded-lg">
-      <img class="size-36" src="https://avatar.iran.liara.run/public" alt="" />
+      <app-image
+        name="https://avatar.iran.liara.run/public"
+        customClass="size-36" />
       <h1 class="flex items-center justify-center text-3xl font-bold my-5">
         Login
       </h1>
@@ -16,7 +18,7 @@
         <div class="relative mb-3">
           <div
             class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
-            <img class="size-4" src="assets/password.svg" alt="" />
+            <app-image name="password.svg" customClass="size-4" />
           </div>
           <input
             type="text"
@@ -32,7 +34,7 @@
         <div class="flex">
           <span
             class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md">
-            <img class="size-4" src="assets/user-edit.svg" alt="" />
+            <app-image name="user-edit.svg" customClass="size-4" />
           </span>
           <input
             type="text"
@@ -45,19 +47,20 @@
           <a href="#" class="text-sm hover:underline">Forgot Password?</a>
         </span>
 
-        <a
-          routerLink="/home"
-          class="w-full relative inline-flex items-center justify-center px-3 py-1 overflow-hidden transition duration-300 ease-out border rounded group mt-4">
+        <app-button
+          [customContend]="true"
+          (onClick)="redirecToHome()"
+          customClass="w-full relative inline-flex items-center justify-center px-3 py-1 overflow-hidden transition duration-300 ease-out border rounded group mt-4">
           <span
             class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-blue-300 group-hover:translate-x-0 ease">
-            <img class="size-4" src="assets/arrow-narrow-right.svg" alt="" />
+            <app-image name="arrow-narrow-right.svg" customClass="size-4" />
           </span>
           <span
             class="absolute flex items-center justify-center w-full h-full transition-all duration-300 transform group-hover:translate-x-full ease"
             >Button Text</span
           >
           <span class="relative invisible">Button Text</span>
-        </a>
+        </app-button>
 
         <span class="w-full flex items-center justify-center mt-5">
           <a routerLink="/sign-up" rou class="text-sm hover:underline"
@@ -66,10 +69,11 @@
         </span>
       </form>
     </article>
+    `
   </section>
 
   <section
     class="hidden w-1/2 bg-red-300 px-2 md:flex md:items-center md:justify-center">
-    <img src="assets/sign-in.svg" alt="" />
+    <app-image name="sign-in.svg" />
   </section>
 </main>

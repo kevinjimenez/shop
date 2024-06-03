@@ -1,0 +1,32 @@
+<button
+  [type]="type()"
+  class="flex items-center justify-center"
+  (click)="onClick.emit()"
+  [ngClass]="buttonClass">
+  @if (customContend()) {
+    <ng-content></ng-content>
+  } @else {
+    @if (!text() && icon()?.name) {
+      <img
+        [ngClass]="iconSize"
+        [src]="icon()?.name | image: icon()?.folder"
+        [alt]="icon()?.name" />
+    } @else if (icon()?.name) {
+      @if (icon()?.left) {
+        <img
+          [ngClass]="iconSize"
+          [src]="icon()?.name | image: icon()?.folder"
+          [alt]="icon()?.name" />
+      }
+      <span>{{ text() }}</span>
+      @if (icon()?.name) {
+        <img
+          [ngClass]="iconSize"
+          [src]="icon()?.name | image: icon()?.folder"
+          [alt]="icon()?.name" />
+      }
+    } @else {
+      {{ text() }}
+    }
+  }
+</button>

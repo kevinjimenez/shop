@@ -4,15 +4,15 @@
       <section
         class="min-w-72 flex items-center gap-x-2 border-2 border-red-200 rounded p-1">
         <picture class="p-2 bg-gray-50/80 rounded">
-          <img class="image" [src]="product.image" alt="" />
+          <app-image [name]="product.image" customClass="image" />
         </picture>
         <div class="grid grid-cols-1 w-full">
           <p class="text-start text-pretty font-bold text-sm">
             {{ product.title }}
           </p>
           <article class="flex flex-wrap">
-            <span class="text-xs uppercase rounded bg-slate-400 px-1 py-0.5">
-              {{ product.category }}
+            <span class="text-xs rounded bg-slate-400 px-1 py-0.5">
+              {{ product.category | titlecase }}
             </span>
           </article>
           <article class="flex items-center justify-between pt-2">
@@ -20,21 +20,21 @@
               {{ product.price | currency }}
             </span>
             <section class="flex flex-wrap gap-x-2">
-              <button class="rounded bg-gray-100 text-xs px-1 py-0.5">
-                <img class="size-5" src="assets/list.svg" alt="" />
-              </button>
-              <button class="rounded bg-gray-100 text-xs px-1 py-0.5">
-                <img
-                  class="size-5"
-                  src="assets/shopping-cart-plus.svg"
-                  alt="" />
-              </button>
+              <app-button
+                customClass="rounded text-xs px-1 py-0.5"
+                (onClick)="viewDetailsProduct(product)"
+                [icon]="{ name: 'list.svg' }" />
+              <app-button
+                customClass="rounded text-xs px-1 py-0.5"
+                [icon]="{ name: 'shopping-cart-plus.svg' }" />
             </section>
           </article>
         </div>
       </section>
     } @empty {
-      vacio
+      <section class="col-span-1 md:col-span-2 lg:col-span-3 place-self-center">
+        <app-image name="empty.svg" />
+      </section>
     }
   </main>
 } @else {
