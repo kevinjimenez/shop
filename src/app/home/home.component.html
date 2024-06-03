@@ -1,46 +1,42 @@
-<main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-2">
-  @for (product of products(); track product.id) {
-    <section
-      class="min-w-72 w-full flex items-center gap-x-2 border-2 border-red-200 rounded p-1">
-      <picture class="p-2 bg-gray-50/80 rounded">
-        <img class="image" [src]="product.image" alt="" />
-      </picture>
-      <div class="grid grid-cols-1 w-full">
-        <p class="text-start text-pretty font-bold text-sm">
-          {{ product.title }}
-        </p>
-        <span
-          class="flex-none rounded bg-green-300 text-xs px-1 uppercase py-0.5">
-          {{ product.category }}
-        </span>
-        <article class="flex items-center justify-between pt-2">
-          <span class="rounded bg-blue-300 text-xs px-1 py-0.5">
-            {{ product.price | currency }}
-          </span>
-          <button class="rounded bg-gray-100 text-xs px-1 py-0.5">
-            <img class="size-5" src="assets/shopping-cart-plus.svg" alt="" />
-          </button>
-        </article>
-      </div>
-      <!-- <article class="flex flex-col w-full">
-        <p class="text-start text-pretty font-bold text-sm">
-          {{ product.title }}
-        </p>
-        <span
-          class="flex-none rounded bg-green-300 text-xs px-1 uppercase py-0.5">
-          {{ product.category }}
-        </span>
-        <article class="flex items-center justify-between">
-          <span class="rounded bg-blue-300 text-xs px-1 py-0.5">
-            {{ product.price | currency }}
-          </span>
-          <button>
-            <img class="size-4" src="assets/user-edit.svg" alt="" />
-          </button>
-        </article>
-      </article> -->
-    </section>
-  } @empty {
-    vacio
-  }
-</main>
+@if (!hasError().error) {
+  <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-2">
+    @for (product of products(); track product.id) {
+      <section
+        class="min-w-72 flex items-center gap-x-2 border-2 border-red-200 rounded p-1">
+        <picture class="p-2 bg-gray-50/80 rounded">
+          <img class="image" [src]="product.image" alt="" />
+        </picture>
+        <div class="grid grid-cols-1 w-full">
+          <p class="text-start text-pretty font-bold text-sm">
+            {{ product.title }}
+          </p>
+          <article class="flex flex-wrap">
+            <span class="text-xs uppercase rounded bg-slate-400 px-1 py-0.5">
+              {{ product.category }}
+            </span>
+          </article>
+          <article class="flex items-center justify-between pt-2">
+            <span class="rounded bg-blue-300 text-xs px-1 py-0.5">
+              {{ product.price | currency }}
+            </span>
+            <section class="flex flex-wrap gap-x-2">
+              <button class="rounded bg-gray-100 text-xs px-1 py-0.5">
+                <img class="size-5" src="assets/list.svg" alt="" />
+              </button>
+              <button class="rounded bg-gray-100 text-xs px-1 py-0.5">
+                <img
+                  class="size-5"
+                  src="assets/shopping-cart-plus.svg"
+                  alt="" />
+              </button>
+            </section>
+          </article>
+        </div>
+      </section>
+    } @empty {
+      vacio
+    }
+  </main>
+} @else {
+  <app-lost-connection />
+}

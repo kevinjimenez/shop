@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, inject, signal } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { Injectable, inject } from '@angular/core';
+import { catchError, throwError } from 'rxjs';
+import { ErrorResponse } from '../models/error-response.mode';
 import { Product } from '../models/product.model';
-import { debounceTime, tap, timeout } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -10,20 +10,16 @@ import { debounceTime, tap, timeout } from 'rxjs';
 export class ProductsService {
   readonly #httpClient = inject(HttpClient);
 
-  public allProducts = signal<{
-    data: Product[];
-    lodging: boolean;
-  }>({ data: [], lodging: false });
-
   getAll() {
-    this.allProducts.set({ data: [], lodging: true });
     return this.#httpClient
       .get<Product[]>('https://fakestoreapi.com/products')
-      .pipe(
-        tap(products => {
-          console.log(products);
-          this.allProducts.set({ data: products, lodging: false });
-        })
-      );
+      .pipe(catchError(this.handleErrorResponse));
+  }
+
+  private handleErrorResponse(
+    // error: HttpErrorResponse,
+    error: ErrorResponse
+  ): ReturnType<typeof throwError> {
+    return throwError(() => error);
   }
 }

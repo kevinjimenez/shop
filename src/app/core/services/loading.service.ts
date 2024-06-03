@@ -1,24 +1,21 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, inject, signal } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoadingService {
-  public isLoading = signal(false);
+  private readonly ngxSpinnerService = inject(NgxSpinnerService);
 
-  public hide(time = 100000) {
-    // this.isLoading.set(false);
+  public hide(time = 250) {
     console.log(time);
 
     setTimeout(() => {
-      console.log('hide', this.isLoading());
-
-      this.isLoading.update(value => !value);
-    }, 10000);
+      this.ngxSpinnerService.hide();
+    }, time);
   }
 
   public show() {
-    this.isLoading.update(value => !value);
-    // setTimeout(() => this.isLoading.set(true), time);
+    this.ngxSpinnerService.show();
   }
 }

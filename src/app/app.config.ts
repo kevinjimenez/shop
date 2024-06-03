@@ -1,17 +1,16 @@
 import {
   ApplicationConfig,
+  importProvidersFrom,
   provideExperimentalZonelessChangeDetection,
 } from '@angular/core';
 import { provideRouter, withHashLocation } from '@angular/router';
 
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { routes } from './app.routes';
-import {
-  provideHttpClient,
-  withInterceptors,
-  withInterceptorsFromDi,
-} from '@angular/common/http';
-import { loadingInterceptor } from './core/interceptors/loading.interceptor';
 import { errorResponseInterceptor } from './core/interceptors/error-response.interceptor';
+import { loadingInterceptor } from './core/interceptors/loading.interceptor';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -19,8 +18,9 @@ export const appConfig: ApplicationConfig = {
     provideExperimentalZonelessChangeDetection(),
     provideHttpClient(
       withInterceptors([errorResponseInterceptor, loadingInterceptor])
-      // withInterceptorsFromDi()
     ),
     provideRouter(routes, withHashLocation()),
+    importProvidersFrom(),
+    provideAnimations(),
   ],
 };

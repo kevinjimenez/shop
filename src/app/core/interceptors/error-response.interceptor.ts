@@ -7,6 +7,7 @@ import {
 import { inject } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
 import { LoadingService } from '../services/loading.service';
+import { ErrorResponse } from '../models/error-response.mode';
 
 export const errorResponseInterceptor: HttpInterceptorFn = (
   req: HttpRequest<unknown>,
@@ -24,6 +25,10 @@ function handleErrorResponse(
   loadingService: LoadingService
 ): ReturnType<typeof throwError> {
   loadingService.hide();
-  const errorResponse = `Error code :${error.status}, message: ${error.message}`;
+  // `Error code :${error.status}, message: ${error.message}`
+  const errorResponse: ErrorResponse = {
+    code: error.status,
+    message: error.message,
+  };
   return throwError(() => errorResponse);
 }
