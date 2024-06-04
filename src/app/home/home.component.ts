@@ -1,8 +1,8 @@
 import { Dialog } from '@angular/cdk/dialog';
 import { CurrencyPipe, TitleCasePipe } from '@angular/common';
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { catchError, throwError } from 'rxjs';
 import { ButtonComponent } from '../components/button/button.component';
 import { ImageComponent } from '../components/image/image.component';
@@ -10,7 +10,6 @@ import { LostConnectionComponent } from '../components/lost-connection/lost-conn
 import { ErrorResponse } from '../core/models/error-response.mode';
 import { Product } from '../core/models/product.model';
 import { ProductsService } from '../core/services/products.service';
-import { HeaderComponent } from './components/header/header.component';
 import { ProductQuantityComponent } from './modals/product-quantity/product-quantity.component';
 
 @Component({
@@ -26,7 +25,7 @@ import { ProductQuantityComponent } from './modals/product-quantity/product-quan
   templateUrl: './home.component.html',
 })
 export class HomeComponent {
-  readonly productsService = inject(ProductsService);
+  private readonly productsService = inject(ProductsService);
   // readonly #activatedRoute = inject(ActivatedRoute);
   private readonly _router = inject(Router);
 

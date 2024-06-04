@@ -16,6 +16,12 @@ export class ProductsService {
       .pipe(catchError(this.handleErrorResponse));
   }
 
+  getById(id: number) {
+    return this.#httpClient
+      .get<Product>('https://fakestoreapi.com/products/' + id)
+      .pipe(catchError(this.handleErrorResponse));
+  }
+
   private handleErrorResponse(
     // error: HttpErrorResponse,
     error: ErrorResponse

@@ -7,10 +7,6 @@
   width: 10rem;
   aspect-ratio: 3/2;
   object-fit: contain;
-  /* mix-blend-mode: color-burn; */
   filter: brightness(1.1) ;
   mix-blend-mode: multiply;
 }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
