@@ -51,8 +51,8 @@ export class HomeComponent implements OnInit {
   viewDetailsProduct(product: Product) {
     console.log(product);
     const dialogRef = this.dialog.open<Product>(DetailsProductComponent, {
-      // minWidth: '800px',
-      // maxWidth: '50%',
+      width: '500px',
+      // maxHeight: '600px',
       data: product,
     });
 

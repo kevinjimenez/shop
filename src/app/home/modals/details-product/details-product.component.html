@@ -1,1 +1,69 @@
-<div class="p-6 bg-gray-100 relative rounded shadow">detail</div>
+<div class="p-6 bg-gray-100 relative rounded shadow flex flex-col">
+  <h1 class="text-xl">{{ product()?.title }}</h1>
+  <hr class="h-px bg-gray-300 border-0" />
+  <section class="flex flex-col items-center gap-y-3 py-3">
+    <picture class="relative">
+      <app-image [name]="product()?.image" customClass="image" />
+      <span
+        class="absolute right-0 top-0 text-xs font-light bg-green-300 px-0.5 rounded-sm"
+        >{{ product()?.price | currency }}</span
+      >
+    </picture>
+    <article class="w-full flex flex-wrap">
+      <span class="bg-yellow-500 rounded-full px-2 py-0.5 text-xs font-light">{{
+        product()?.category | titlecase
+      }}</span>
+    </article>
+    <section class="flex items-center justify-start">
+      <app-star iconClass="w-4 h-4 text-yellow-500 me-1" />
+      <p class="ms-2 text-sm font-bold text-gray-900">
+        {{ product()?.rating?.rate }}
+      </p>
+      <span class="w-1 h-1 mx-1.5 bg-gray-500 rounded-full"></span>
+      <p class="text-sm font-medium text-gray-900 underline hover:no-underline">
+        {{ product()?.rating?.count }} reviews
+      </p>
+    </section>
+    <p class="text-sm font-light">{{ product()?.description }}</p>
+    <section class="w-full flex items-center justify-center">
+      <form>
+        <label
+          for="bedrooms-input"
+          class="block mb-2 text-sm font-normal text-gray-900"
+          >Choose quantity:</label
+        >
+        <section class="relative flex items-center max-w-[11rem]">
+          <button
+            type="button"
+            (click)="onDecrement()"
+            class="bg-blue-300 hover:bg-blue-400 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 focus:ring-2 focus:outline-none">
+            <app-image name="minus.svg" />
+          </button>
+          <input
+            type="text"
+            class="bg-gray-50 border-x-0 border-gray-300 h-11 font-medium text-center text-gray-900 text-sm focus:ring-green-500 focus:border-green-500 block w-full pb-6"
+            placeholder=""
+            [formControl]="quantity" />
+          <picture
+            class="absolute bottom-1 start-1/2 -translate-x-1/2 rtl:translate-x-1/2 flex items-center text-xs text-gray-400 space-x-1 rtl:space-x-reverse">
+            <app-image name="shopping-cart-plus.svg" customClass="size-3" />
+            <span>Items</span>
+          </picture>
+          <button
+            type="button"
+            (click)="onIncrement()"
+            class="bg-blue-300 hover:bg-blue-400 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 focus:ring-2 focus:outline-none">
+            <app-image name="plus.svg" />
+          </button>
+        </section>
+        <p class="mt-2 text-xs text-gray-500">
+          Please select the number of items.
+        </p>
+      </form>
+      <app-button
+        text="Add cart"
+        customClass="rounded py-2.5 px-4"
+        [icon]="{ name: 'shopping-cart-plus.svg', left: true }" />
+    </section>
+  </section>
+</div>

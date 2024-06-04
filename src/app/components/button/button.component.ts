@@ -30,8 +30,6 @@ export class ButtonComponent {
   public onClick = output();
 
   private get buttonColor() {
-    console.log(this.color());
-
     return {
       'bg-green-600 hover:bg-green-800/80': this.color() === 'success',
       'bg-red-600 hover:bg-red-800/80': this.color() === 'danger',

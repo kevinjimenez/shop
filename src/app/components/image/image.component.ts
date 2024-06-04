@@ -1,6 +1,6 @@
 import { Component, input } from '@angular/core';
 import { ImagePipe } from '../../pipes/image.pipe';
-import { NgClass } from '@angular/common';
+import { JsonPipe, NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-image',
@@ -15,6 +15,8 @@ export class ImageComponent {
   public alt = input<string>();
 
   protected get imageClass() {
+    console.log(this.customClass());
+
     return {
       [this.customClass() ?? '']: this.customClass() !== null,
     };

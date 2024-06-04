@@ -1,50 +1,46 @@
 <main class="flex h-screen justify-center items-center">
-  <div class="p-10">
-    <h1 class="mb-8 font-extrabold text-4xl">Register</h1>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <form>
-        <div>
-          <label class="block font-semibold" for="name">Name</label>
-          <input
-            class="shadow-inner bg-gray-100 rounded-lg placeholder-black text-2xl p-4 border-none block mt-1 w-full"
-            id="name"
-            type="text"
-            name="name"
-            required="required"
-            autofocus="autofocus" />
-        </div>
+  <section class="p-10">
+    <h1 class="mb-8 text-3xl font-bold">Register</h1>
+    <article class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <form class="w-full">
+        <app-input
+          label="Name"
+          placeholder="name@flowbite.com"
+          prefixIcon="password.svg" />
 
-        <div class="mt-4">
-          <label class="block font-semibold" for="email">Email</label>
-          <input
-            class="shadow-inner bg-gray-100 rounded-lg placeholder-black text-2xl p-4 border-none block mt-1 w-full"
-            id="email"
-            type="email"
-            name="email"
-            required="required" />
-        </div>
+        <app-input
+          label="Email"
+          placeholder="elonmusk"
+          prefixIcon="user-edit.svg" />
 
-        <div class="mt-4">
-          <label class="block font-semibold" for="password">Password</label>
-          <input
-            class="w-full shadow-inner bg-gray-100 rounded-lg placeholder-black text-2xl p-4 border-none block mt-1"
-            id="password"
-            type="password"
-            name="password"
-            required="required"
-            autocomplete="new-password" />
-        </div>
+        <app-input
+          label="Password"
+          inputType="password"
+          placeholder="elonmusk"
+          prefixIcon="user-edit.svg" />
 
-        <div class="flex items-center justify-between mt-8">
-          <button
-            type="submit"
-            class="flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
-            Register
-          </button>
-          <a routerLink="/sign-in" class="font-semibold">
-            Already registered?
-          </a>
-        </div>
+        <section class="flex items-center justify-between">
+          <app-button
+            [customContend]="true"
+            (onClick)="redirecToHome()"
+            customClass="w-full relative inline-flex items-center justify-center px-10 py-1 overflow-hidden transition duration-300 ease-out border rounded group mt-4">
+            <span
+              class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-blue-300 group-hover:translate-x-0 ease">
+              <app-image name="arrow-narrow-right.svg" customClass="size-4" />
+            </span>
+            <span
+              class="absolute flex items-center justify-center w-full h-full transition-all duration-300 transform group-hover:translate-x-full ease"
+              >Sign up</span
+            >
+            <span class="relative invisible">Sign up</span>
+          </app-button>
+
+          <span class="flex items-center justify-center mt-5">
+            <a routerLink="/sign-in" rou class="text-sm hover:underline"
+              >Already registered?</a
+            >
+          </span>
+        </section>
       </form>
 
       <aside class="">
@@ -65,6 +61,6 @@
           </ul>
         </div>
       </aside>
-    </div>
-  </div>
+    </article>
+  </section>
 </main>

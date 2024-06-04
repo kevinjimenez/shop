@@ -1,5 +1,5 @@
 @if (!hasError().error) {
-  <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-2">
+  <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-2 h-dvh">
     @for (product of products(); track product.id) {
       <section
         class="min-w-72 flex items-center gap-x-2 border-2 border-red-200 rounded p-1">
@@ -7,16 +7,17 @@
           <app-image [name]="product.image" customClass="image" />
         </picture>
         <div class="grid grid-cols-1 w-full">
-          <p class="text-start text-pretty font-bold text-sm">
+          <p class="text-start text-pretty font-bold text-lg">
             {{ product.title }}
           </p>
           <article class="flex flex-wrap">
-            <span class="text-xs rounded bg-slate-400 px-1 py-0.5">
+            <span
+              class="text-[0.7rem] rounded-full bg-slate-400 font-light px-1 py-0.5">
               {{ product.category | titlecase }}
             </span>
           </article>
           <article class="flex items-center justify-between pt-2">
-            <span class="rounded bg-blue-300 text-xs px-1 py-0.5">
+            <span class="rounded bg-blue-300 text-sm px-1 py-0.5">
               {{ product.price | currency }}
             </span>
             <section class="flex flex-wrap gap-x-2">

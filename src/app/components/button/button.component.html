@@ -19,7 +19,7 @@
           [alt]="icon()?.name" />
       }
       <span>{{ text() }}</span>
-      @if (icon()?.name) {
+      @if (icon()?.rigth) {
         <img
           [ngClass]="iconSize"
           [src]="icon()?.name | image: icon()?.folder"

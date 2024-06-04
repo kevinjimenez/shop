@@ -10,38 +10,15 @@
         Login
       </h1>
       <form class="w-full">
-        <label
-          for="input-group-1"
-          class="block mb-2 text-sm font-medium text-gray-900"
-          >Your Email</label
-        >
-        <div class="relative mb-3">
-          <div
-            class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
-            <app-image name="password.svg" customClass="size-4" />
-          </div>
-          <input
-            type="text"
-            id="input-group-1"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5"
-            placeholder="name@flowbite.com" />
-        </div>
-        <label
-          for="website-admin"
-          class="block mb-2 text-sm font-medium text-gray-900"
-          >Username</label
-        >
-        <div class="flex">
-          <span
-            class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md">
-            <app-image name="user-edit.svg" customClass="size-4" />
-          </span>
-          <input
-            type="text"
-            id="website-admin"
-            class="rounded-none rounded-e-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5"
-            placeholder="elonmusk" />
-        </div>
+        <app-input
+          label="Your Email"
+          placeholder="name@flowbite.com"
+          prefixIcon="password.svg" />
+
+        <app-input
+          label="Username"
+          placeholder="elonmusk"
+          prefixIcon="user-edit.svg" />
 
         <span class="flex mt-4">
           <a href="#" class="text-sm hover:underline">Forgot Password?</a>
@@ -57,9 +34,9 @@
           </span>
           <span
             class="absolute flex items-center justify-center w-full h-full transition-all duration-300 transform group-hover:translate-x-full ease"
-            >Button Text</span
+            >Sign in</span
           >
-          <span class="relative invisible">Button Text</span>
+          <span class="relative invisible">Sign in</span>
         </app-button>
 
         <span class="w-full flex items-center justify-center mt-5">
