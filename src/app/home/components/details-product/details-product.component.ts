@@ -1,11 +1,10 @@
-import { DIALOG_DATA } from '@angular/cdk/dialog';
-import { Component, Inject, signal } from '@angular/core';
-import { ImageComponent } from '../../../components/image/image.component';
-import { Product } from '../../../core/models/product.model';
 import { CurrencyPipe, TitleCasePipe } from '@angular/common';
-import { StarComponent } from '../../../components/svg/star.component';
+import { Component, input, signal } from '@angular/core';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ButtonComponent } from '../../../components/button/button.component';
+import { ImageComponent } from '../../../components/image/image.component';
+import { StarComponent } from '../../../components/svg/star.component';
+import { Product } from '../../../core/models/product.model';
 
 @Component({
   selector: 'app-details-product',
@@ -26,9 +25,7 @@ export class DetailsProductComponent {
   public product = signal<Product | null>(null);
   public count = signal<number>(0);
 
-  constructor(@Inject(DIALOG_DATA) public data: Product) {
-    this.product.set(data);
-  }
+  public id = input();
 
   onDecrement() {
     this.count.update(value => value - 1);

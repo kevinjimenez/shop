@@ -15,8 +15,6 @@ export class ImageComponent {
   public alt = input<string>();
 
   protected get imageClass() {
-    console.log(this.customClass());
-
     return {
       [this.customClass() ?? '']: this.customClass() !== null,
     };

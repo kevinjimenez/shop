@@ -1,16 +1,17 @@
 import { Dialog } from '@angular/cdk/dialog';
-import { CurrencyPipe, JsonPipe, TitleCasePipe } from '@angular/common';
+import { CurrencyPipe, TitleCasePipe } from '@angular/common';
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, throwError } from 'rxjs';
+import { ButtonComponent } from '../components/button/button.component';
+import { ImageComponent } from '../components/image/image.component';
 import { LostConnectionComponent } from '../components/lost-connection/lost-connection.component';
 import { ErrorResponse } from '../core/models/error-response.mode';
 import { Product } from '../core/models/product.model';
 import { ProductsService } from '../core/services/products.service';
-import { DetailsProductComponent } from './modals/details-product/details-product.component';
-import { ButtonComponent } from '../components/button/button.component';
-import { ImageComponent } from '../components/image/image.component';
+import { HeaderComponent } from './components/header/header.component';
+import { ProductQuantityComponent } from './modals/product-quantity/product-quantity.component';
 
 @Component({
   selector: 'app-home',
@@ -24,9 +25,10 @@ import { ImageComponent } from '../components/image/image.component';
   ],
   templateUrl: './home.component.html',
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   readonly productsService = inject(ProductsService);
-  readonly #activatedRoute = inject(ActivatedRoute);
+  // readonly #activatedRoute = inject(ActivatedRoute);
+  private readonly _router = inject(Router);
 
   private readonly dialog = inject(Dialog);
 
@@ -44,18 +46,22 @@ export class HomeComponent implements OnInit {
     }
   );
 
-  ngOnInit(): void {
-    this.#activatedRoute.data.subscribe(data => console.log(data));
-  }
+  // ngOnInit(): void {
+  //   this.#activatedRoute.data.subscribe(data => console.log(data));
+  // }
 
-  viewDetailsProduct(product: Product) {
-    console.log(product);
-    const dialogRef = this.dialog.open<Product>(DetailsProductComponent, {
+  productQuantity(product: Product) {
+    const dialogRef = this.dialog.open<Product>(ProductQuantityComponent, {
+      disableClose: true,
       width: '500px',
       // maxHeight: '600px',
       data: product,
     });
 
     dialogRef.closed.subscribe(output => {});
+  }
+
+  viewDetailsProduct(product: Product) {
+    this._router.navigate(['home/product', product.id]);
   }
 }

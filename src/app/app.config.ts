@@ -5,6 +5,7 @@ import {
 } from '@angular/core';
 import {
   provideRouter,
+  withComponentInputBinding,
   withHashLocation,
   withViewTransitions,
 } from '@angular/router';
@@ -24,7 +25,12 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(
       withInterceptors([errorResponseInterceptor, loadingInterceptor])
     ),
-    provideRouter(routes, withHashLocation(), withViewTransitions()),
+    provideRouter(
+      routes,
+      withHashLocation(),
+      withViewTransitions(),
+      withComponentInputBinding()
+    ),
     importProvidersFrom(),
     provideAnimations(),
     provideAnimationsAsync(),

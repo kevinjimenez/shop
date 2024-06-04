@@ -30,9 +30,6 @@ export class InputComponent {
   }
 
   public onShowPassword() {
-    console.log('showPassword');
-    console.log(this.showPassword());
     this.showPassword.update(value => !value);
-    console.log(this.showPassword());
   }
 }

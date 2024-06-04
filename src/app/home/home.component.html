@@ -1,9 +1,11 @@
 @if (!hasError().error) {
-  <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-2 h-dvh">
+  <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-2">
     @for (product of products(); track product.id) {
       <section
         class="min-w-72 flex items-center gap-x-2 border-2 border-red-200 rounded p-1">
-        <picture class="p-2 bg-gray-50/80 rounded">
+        <picture
+          class="p-2 bg-gray-50/80 rounded"
+          (click)="viewDetailsProduct(product)">
           <app-image [name]="product.image" customClass="image" />
         </picture>
         <div class="grid grid-cols-1 w-full">
@@ -23,7 +25,7 @@
             <section class="flex flex-wrap gap-x-2">
               <app-button
                 customClass="rounded text-xs px-1 py-0.5"
-                (onClick)="viewDetailsProduct(product)"
+                (onClick)="productQuantity(product)"
                 [icon]="{ name: 'list.svg' }" />
               <app-button
                 customClass="rounded text-xs px-1 py-0.5"
@@ -33,7 +35,8 @@
         </div>
       </section>
     } @empty {
-      <section class="col-span-1 md:col-span-2 lg:col-span-3 place-self-center">
+      <section
+        class="col-span-1 md:col-span-2 lg:col-span-3 place-self-center h-dvh">
         <app-image name="empty.svg" />
       </section>
     }
