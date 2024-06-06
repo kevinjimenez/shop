@@ -1,7 +1,32 @@
-<main class="flex h-screen justify-center items-center">
-  <section class="p-10 bg-main">
-    <h1 class="mb-8 text-3xl font-bold text-headline">Register</h1>
-    <article class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<main class="flex items-start flex-col-reverse md:flex-row pt-0 md:pt-5">
+  <section
+    class="w-full md:w-1/2 flex items-center justify-center pt-2 md:pt-0">
+    <aside class="px-5 w-[29rem] md:w-full">
+      <article class="p-8 rounded border-2 border-main w-full">
+        <h2 class="font-bold text-2xl text-headline">Instructions</h2>
+        <ul class="list-disc mt-4 list-inside text-paragraph">
+          <li>
+            All users must provide a valid email address and password to create
+            an account.
+          </li>
+          <li>
+            Users must not use offensive, vulgar, or otherwise inappropriate
+            language in their username or profile information
+          </li>
+          <li>Users must not create multiple accounts for the same person.</li>
+        </ul>
+      </article>
+    </aside>
+  </section>
+
+  <section
+    class="w-full md:w-1/2 flex items-center justify-center pt-2 md:pt-0">
+    <article
+      class="flex flex-col items-center justify-center w-[26.5rem] bg-main p-5 mx-3 md:mx-0 rounded-lg">
+      <h1
+        class="w-full flex items-center justify-start text-3xl font-bold my-5 text-headline">
+        Register
+      </h1>
       <form class="w-full">
         <app-input
           label="Name"
@@ -44,25 +69,6 @@
           </span>
         </section>
       </form>
-
-      <aside>
-        <div class="p-8 rounded">
-          <h2 class="font-bold text-2xl text-headline">Instructions</h2>
-          <ul class="list-disc mt-4 list-inside text-paragraph">
-            <li>
-              All users must provide a valid email address and password to
-              create an account.
-            </li>
-            <li>
-              Users must not use offensive, vulgar, or otherwise inappropriate
-              language in their username or profile information
-            </li>
-            <li>
-              Users must not create multiple accounts for the same person.
-            </li>
-          </ul>
-        </div>
-      </aside>
     </article>
   </section>
 </main>
