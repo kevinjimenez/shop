@@ -1,57 +1,55 @@
-<app-header />
 @if (!hasError().error) {
-  <section class="w-full flex flex-wrap gap-2 px-1 py-2">
-    <span class="rounded-full px-2 py-0.5 text-xs bg-blue-200"> All </span>
-    @for (category of categories(); track $index) {
-      <span class="rounded-full px-2 py-0.5 text-xs bg-blue-200">
-        {{ category }}
-      </span>
-    }
-  </section>
-  <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-2">
-    @for (product of products(); track product.id) {
-      <section
-        class="min-w-72 flex items-center gap-x-2 border-2 border-red-200 rounded p-1">
-        <picture
-          class="p-2 bg-gray-50/80 rounded"
-          (click)="viewDetailsProduct(product)">
-          <app-image [name]="product.image" customClass="image" />
-        </picture>
-        <div class="grid grid-cols-1 w-full">
-          <p class="text-start text-pretty font-bold text-lg">
-            {{ product.title }}
-          </p>
-          <article class="flex flex-wrap">
-            <span
-              class="text-[0.7rem] rounded-full bg-slate-400 font-light px-1 py-0.5">
+  <main class="w-full flex flex-col items-center justify-center p-2">
+    <section class="w-full flex gap-2 px-3">
+      <span class="rounded-full px-2 py-0.5 text-xs bg-blue-200"> All </span>
+      @for (category of categories(); track $index) {
+        <span class="rounded-full px-2 py-0.5 text-xs bg-blue-200">
+          {{ category | titlecase }}
+        </span>
+      }
+    </section>
+    <section class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-2">
+      @for (product of products(); track product.id) {
+        <section
+          class="w-full flex flex-col items-center gap-x-2 border-2 border-red-200 rounded p-1">
+          <picture
+            class="p-2 w-full bg-gray-50/80 rounded"
+            (click)="viewDetailsProduct(product)">
+            <app-image
+              [name]="product.image"
+              customClass="size-36 w-full object-contain aspect-video image" />
+          </picture>
+          <div class="w-full px-2">
+            <span class="text-[0.6rem] text-neutral-600 font-light">
               {{ product.category | titlecase }}
             </span>
-          </article>
-          <article class="flex items-center justify-between pt-2">
-            <span class="rounded bg-blue-300 text-sm px-1 py-0.5">
-              {{ product.price | currency }}
-            </span>
-            <section class="flex flex-wrap gap-x-2">
-              <app-button
-                customClass="rounded text-xs px-1 py-0.5"
-                (onClick)="productQuantity(product)"
-                [icon]="{ name: 'list.svg' }" />
-              <app-button
-                customClass="rounded text-xs px-1 py-0.5"
-                [icon]="{ name: 'shopping-cart-plus.svg' }" />
-            </section>
-          </article>
-        </div>
-      </section>
-    } @empty {
-      <section
-        class="col-span-1 md:col-span-2 lg:col-span-3 place-self-center h-dvh">
-        <app-image name="empty.svg" />
-      </section>
-    }
-    <!-- <div class="col-span-3 place-self-center">
-      <app-button text="View more" customClass="rounded py-1.5 px-8" />
-    </div> -->
+            <h5 class="text-start text-pretty font-bold text-sm">
+              {{ product.title }}
+            </h5>
+            <article class="flex items-center justify-between pt-3">
+              <span class="rounded bg-blue-300 text-sm px-1 py-0.5">
+                {{ product.price | currency }}
+              </span>
+              <section class="flex items-center justify-center gap-x-2">
+                <app-button
+                  customClass="rounded text-sm px-1 py-0.5"
+                  (onClick)="productQuantity(product)"
+                  text="View details" />
+                <app-button
+                  customClass="rounded-full text-xs px-1 py-0.5"
+                  [icon]="{ name: 'shopping-cart-plus.svg' }" />
+              </section>
+            </article>
+          </div>
+        </section>
+      } @empty {
+        <section
+          class="col-span-1 md:col-span-2 lg:col-span-3 place-self-center h-dvh">
+          <app-image name="empty.svg" />
+        </section>
+      }
+    </section>
+    <app-button text="View more" customClass="rounded py-1.5 px-8" />
   </main>
 } @else {
   <app-lost-connection />

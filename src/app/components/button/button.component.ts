@@ -40,7 +40,7 @@ export class ButtonComponent {
   protected get buttonClass() {
     return {
       ...this.buttonColor,
-      'gap-x-3': this.text() && this.icon()?.name,
+      'gap-x-1': this.text() && this.icon()?.name,
       [this.customClass() ?? '']: this.customClass() !== null,
       // 'cursor-not-allowed opacity-50': this.disabled(),
     };

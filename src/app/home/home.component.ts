@@ -67,7 +67,7 @@ export class HomeComponent {
 
   productQuantity(product: Product) {
     const dialogRef = this.dialog.open<Product>(ProductQuantityComponent, {
-      disableClose: true,
+      // disableClose: true,
       width: '500px',
       // maxHeight: '600px',
       data: product,

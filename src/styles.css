@@ -4,9 +4,9 @@
 @tailwind utilities;
 
 .image {
-  width: 10rem;
+  /* width: 10rem;
   aspect-ratio: 3/2;
-  object-fit: contain;
+  object-fit: contain; */
   filter: brightness(1.1) ;
   mix-blend-mode: multiply;
 }

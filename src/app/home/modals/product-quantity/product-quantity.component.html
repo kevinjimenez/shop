@@ -3,57 +3,51 @@
   <hr class="h-px bg-gray-300 border-0" />
   <section class="flex flex-col items-center gap-y-3 py-3">
     <picture class="relative">
-      <app-image [name]="product()?.image" customClass="image" />
+      <app-image
+        [name]="product()?.image"
+        customClass="image size-36 w-full object-contain aspect-video " />
       <span
         class="absolute right-0 top-0 text-xs font-light bg-green-300 px-0.5 rounded-sm"
         >{{ product()?.price | currency }}</span
       >
     </picture>
     <article class="w-full flex flex-wrap">
-      <span class="bg-yellow-500 rounded-full px-2 py-0.5 text-xs font-light">{{
-        product()?.category | titlecase
-      }}</span>
+      <span class="text-[0.6rem] text-neutral-600 font-light">
+        {{ product()?.category | titlecase }}
+      </span>
+      <p class="text-xs">{{ product()?.description }}</p>
     </article>
     <section class="w-full flex flex-col items-center justify-center gap-y-2">
-      <form>
-        <label
-          for="bedrooms-input"
-          class="block mb-2 text-sm font-normal text-gray-900"
-          >Choose quantity:</label
-        >
+      <form class="w-full flex items-center gap-x-3">
         <section class="relative flex items-center max-w-[11rem]">
-          <button
-            type="button"
-            (click)="onDecrement()"
-            class="bg-blue-300 hover:bg-blue-400 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 focus:ring-2 focus:outline-none">
-            <app-image name="minus.svg" />
-          </button>
+          <app-button
+            (onClick)="onDecrement()"
+            [icon]="{ name: 'minus.svg', sizeClass: 'size-7' }"
+            customClass="bg-green-500 rounded-lg px-2 py-1" />
           <input
             type="text"
-            class="bg-gray-50 border-x-0 border-gray-300 h-11 font-medium text-center text-gray-900 text-sm focus:ring-green-500 focus:border-green-500 block w-full pb-6"
-            placeholder=""
+            class="bg-transparent border-transparent border-x-0 h-0 font-medium text-center text-gray-900 text-sm focus:ring-transparent focus:border-transparent block w-full pb-6"
             [formControl]="quantity" />
           <picture
             class="absolute bottom-1 start-1/2 -translate-x-1/2 rtl:translate-x-1/2 flex items-center text-xs text-gray-400 space-x-1 rtl:space-x-reverse">
             <app-image name="shopping-cart-plus.svg" customClass="size-3" />
             <span>Items</span>
           </picture>
-          <button
-            type="button"
-            (click)="onIncrement()"
-            class="bg-blue-300 hover:bg-blue-400 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 focus:ring-2 focus:outline-none">
-            <app-image name="plus.svg" />
-          </button>
+          <app-button
+            (onClick)="onIncrement()"
+            [icon]="{ name: 'plus.svg', sizeClass: 'size-7' }"
+            customClass="bg-green-500 rounded-lg px-2 py-1" />
         </section>
+        <app-button
+          class="grow"
+          text="Add cart"
+          customClass="rounded py-1.5 px-2 w-full"
+          [icon]="{ name: 'shopping-cart-plus.svg', left: true }" />
       </form>
       <app-button
-        text="Add cart"
-        customClass="rounded py-1.5 px-2"
-        [icon]="{ name: 'shopping-cart-plus.svg', left: true }" />
-
-      <app-button
+        class="grow w-full"
         text="Cancel"
-        customClass="rounded py-1.5 px-8"
+        customClass="rounded py-1.5 px-8 w-full"
         color="danger"
         (onClick)="onClose()" />
     </section>
