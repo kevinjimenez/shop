@@ -1,4 +1,13 @@
+<app-header />
 @if (!hasError().error) {
+  <section class="w-full flex flex-wrap gap-2 px-1 py-2">
+    <span class="rounded-full px-2 py-0.5 text-xs bg-blue-200"> All </span>
+    @for (category of categories(); track $index) {
+      <span class="rounded-full px-2 py-0.5 text-xs bg-blue-200">
+        {{ category }}
+      </span>
+    }
+  </section>
   <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-2">
     @for (product of products(); track product.id) {
       <section
@@ -40,6 +49,9 @@
         <app-image name="empty.svg" />
       </section>
     }
+    <!-- <div class="col-span-3 place-self-center">
+      <app-button text="View more" customClass="rounded py-1.5 px-8" />
+    </div> -->
   </main>
 } @else {
   <app-lost-connection />

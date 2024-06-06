@@ -11,6 +11,8 @@ import { ErrorResponse } from '../core/models/error-response.mode';
 import { Product } from '../core/models/product.model';
 import { ProductsService } from '../core/services/products.service';
 import { ProductQuantityComponent } from './modals/product-quantity/product-quantity.component';
+import { CategoriesService } from '../core/services/categories.service';
+import { HeaderComponent } from './components/header/header.component';
 
 @Component({
   selector: 'app-home',
@@ -21,11 +23,13 @@ import { ProductQuantityComponent } from './modals/product-quantity/product-quan
     LostConnectionComponent,
     ButtonComponent,
     ImageComponent,
+    HeaderComponent,
   ],
   templateUrl: './home.component.html',
 })
 export class HomeComponent {
   private readonly productsService = inject(ProductsService);
+  private readonly categoriesService = inject(CategoriesService);
   // readonly #activatedRoute = inject(ActivatedRoute);
   private readonly _router = inject(Router);
 
@@ -35,6 +39,18 @@ export class HomeComponent {
 
   public products = toSignal(
     this.productsService.getAll().pipe(
+      catchError((error: ErrorResponse) => {
+        this.hasError.set({ error: true, message: error.message });
+        return throwError(() => error);
+      })
+    ),
+    {
+      initialValue: [],
+    }
+  );
+
+  public categories = toSignal(
+    this.categoriesService.getAll().pipe(
       catchError((error: ErrorResponse) => {
         this.hasError.set({ error: true, message: error.message });
         return throwError(() => error);

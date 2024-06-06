@@ -22,6 +22,12 @@ export class ProductsService {
       .pipe(catchError(this.handleErrorResponse));
   }
 
+  getByCategory(category: string) {
+    return this.#httpClient
+      .get<Product>('https://fakestoreapi.com/products/category/' + category)
+      .pipe(catchError(this.handleErrorResponse));
+  }
+
   private handleErrorResponse(
     // error: HttpErrorResponse,
     error: ErrorResponse
