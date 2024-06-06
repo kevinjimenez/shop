@@ -1,15 +1,15 @@
 @if (!hasError().error) {
   <main class="w-full flex flex-col items-center justify-center p-2">
-    <section class="w-full flex gap-2 px-3">
+    <section class="w-full flex flex-wrap gap-2 px-3">
       <span
-        class="rounded-full px-2 py-0.5 text-xs bg-blue-200 cursor-pointer"
+        class="rounded-full px-2 py-0.5 text-xs bg-main cursor-pointer text-paragraph"
         (click)="changeCategory()">
         All
       </span>
       @for (category of categories(); track $index) {
         <span
           (click)="changeCategory(category)"
-          class="rounded-full px-2 py-0.5 text-xs bg-blue-200 cursor-pointer">
+          class="rounded-full px-2 py-0.5 text-xs bg-main cursor-pointer text-paragraph">
           {{ category | titlecase }}
         </span>
       }
@@ -17,7 +17,7 @@
     <section class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-2">
       @for (product of products(); track product.id) {
         <section
-          class="w-full flex flex-col items-center gap-x-2 border-2 border-red-200 rounded p-1">
+          class="w-full flex flex-col items-center gap-x-2 border-2 border-main rounded p-1">
           <picture
             class="p-2 w-full bg-gray-50/80 rounded"
             (click)="viewDetailsProduct(product)">
@@ -26,25 +26,29 @@
               customClass="size-36 w-full object-contain aspect-video image" />
           </picture>
           <div class="w-full px-2">
-            <span class="text-[0.6rem] text-neutral-600 font-light">
+            <span class="text-[0.6rem] text-paragraph font-light">
               {{ product.category | titlecase }}
             </span>
-            <h5 class="text-start text-pretty font-bold text-sm">
+            <h5 class="text-start text-pretty font-bold text-sm text-headline">
               {{ product.title }}
             </h5>
-            <article class="flex items-center justify-between pt-3">
-              <span class="rounded bg-blue-300 text-sm px-1 py-0.5">
+            <span class="flex items-center justify-start py-1">
+              <app-image name="tag.svg" class="size-4" />
+              <p class="rounded text-[0.95rem] px-1 py-0.5 text-headline">
                 {{ product.price | currency }}
-              </span>
-              <section class="flex items-center justify-center gap-x-2">
-                <app-button
-                  customClass="rounded text-sm px-1 py-0.5"
-                  (onClick)="productQuantity(product)"
-                  text="View details" />
-                <app-button
-                  customClass="rounded-full text-xs px-1 py-0.5"
-                  [icon]="{ name: 'shopping-cart-plus.svg' }" />
-              </section>
+              </p>
+            </span>
+            <article class="flex items-center justify-center pt-3 gap-x-2">
+              <app-button
+                customClass="rounded text-sm px-5 py-1.5"
+                (onClick)="productQuantity(product)"
+                text="View details" />
+              <app-button
+                customClass="rounded-full text-xs p-2"
+                [icon]="{
+                  name: 'shopping-cart-plus.svg',
+                  sizeClass: 'size-4'
+                }" />
             </article>
           </div>
         </section>

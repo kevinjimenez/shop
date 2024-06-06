@@ -4,7 +4,7 @@
   } @else {
     <label
       [for]="label()"
-      class="block mb-2 text-sm font-medium text-gray-900"
+      class="block mb-2 text-sm font-medium text-paragraph"
       >{{ label() }}</label
     >
     <article [ngClass]="{ 'relative mb-3': prefixIcon() }">
@@ -19,7 +19,7 @@
           inputType() === 'password' && showPassword() ? 'text' : inputType()
         "
         [id]="label()"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        class="bg-background border-none text-paragraph text-sm rounded-md focus:ring-transparent focus:border-transparent block w-full p-2.5"
         [ngClass]="InputClass"
         [placeholder]="placeholder()" />
 

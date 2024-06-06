@@ -1,12 +1,12 @@
-<main class="flex h-screen bg-blue-200">
-  <section
-    class="w-full md:w-1/2 flex items-center justify-center bg-green-300">
+<main class="flex h-screen">
+  <section class="w-full md:w-1/2 flex items-center justify-center">
     <article
-      class="flex flex-col items-center justify-center w-full sm:w-96 bg-orange-300 p-5 mx-3 md:mx-0 min-w-[20rem] rounded-lg">
+      class="flex flex-col items-center justify-center w-full sm:w-96 bg-main p-5 mx-3 md:mx-0 min-w-[20rem] rounded-lg">
       <app-image
         name="https://avatar.iran.liara.run/public"
         customClass="size-36" />
-      <h1 class="flex items-center justify-center text-3xl font-bold my-5">
+      <h1
+        class="flex items-center justify-center text-3xl font-bold my-5 text-headline">
         Login
       </h1>
       <form class="w-full">
@@ -21,36 +21,39 @@
           prefixIcon="user-edit.svg" />
 
         <span class="flex mt-4">
-          <a href="#" class="text-sm hover:underline">Forgot Password?</a>
+          <a href="#" class="text-sm hover:underline text-paragraph"
+            >Forgot Password?</a
+          >
         </span>
 
         <app-button
           [customContend]="true"
           (onClick)="redirecToHome()"
-          customClass="w-full relative inline-flex items-center justify-center px-3 py-1 overflow-hidden transition duration-300 ease-out border rounded group mt-4">
+          customClass="w-full relative inline-flex items-center justify-center px-3 py-2 overflow-hidden transition duration-300 ease-out rounded group mt-4">
           <span
-            class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-blue-300 group-hover:translate-x-0 ease">
-            <app-image name="arrow-narrow-right.svg" customClass="size-4" />
+            class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-main group-hover:translate-x-0 ease border-2 border-tertiary">
+            <app-image name="arrow-narrow-right.svg" customClass="size-6" />
           </span>
           <span
-            class="absolute flex items-center justify-center w-full h-full transition-all duration-300 transform group-hover:translate-x-full ease"
+            class="absolute flex items-center justify-center w-full h-full transition-all duration-300 transform group-hover:translate-x-full ease text-paragraph"
             >Sign in</span
           >
-          <span class="relative invisible">Sign in</span>
+          <span class="relative invisible text-paragraph">Sign in</span>
         </app-button>
 
         <span class="w-full flex items-center justify-center mt-5">
-          <a routerLink="/sign-up" rou class="text-sm hover:underline"
+          <a
+            routerLink="/sign-up"
+            rou
+            class="text-sm hover:underline text-paragraph"
             >Forgot Password?</a
           >
         </span>
       </form>
     </article>
-    `
   </section>
 
-  <section
-    class="hidden w-1/2 bg-red-300 px-2 md:flex md:items-center md:justify-center">
+  <section class="hidden w-1/2 px-2 md:flex md:items-center md:justify-center">
     <app-image name="sign-in.svg" />
   </section>
 </main>

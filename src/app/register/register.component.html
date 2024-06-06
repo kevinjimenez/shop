@@ -1,6 +1,6 @@
 <main class="flex h-screen justify-center items-center">
-  <section class="p-10">
-    <h1 class="mb-8 text-3xl font-bold">Register</h1>
+  <section class="p-10 bg-main">
+    <h1 class="mb-8 text-3xl font-bold text-headline">Register</h1>
     <article class="grid grid-cols-1 md:grid-cols-2 gap-8">
       <form class="w-full">
         <app-input
@@ -23,30 +23,32 @@
           <app-button
             [customContend]="true"
             (onClick)="redirecToHome()"
-            customClass="w-full relative inline-flex items-center justify-center px-10 py-1 overflow-hidden transition duration-300 ease-out border rounded group mt-4">
+            customClass="w-full relative inline-flex items-center justify-center px-16 py-2 overflow-hidden transition duration-300 ease-out rounded group mt-4">
             <span
-              class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-blue-300 group-hover:translate-x-0 ease">
-              <app-image name="arrow-narrow-right.svg" customClass="size-4" />
+              class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-main group-hover:translate-x-0 ease border-2 border-tertiary">
+              <app-image name="arrow-narrow-right.svg" customClass="size-5" />
             </span>
             <span
-              class="absolute flex items-center justify-center w-full h-full transition-all duration-300 transform group-hover:translate-x-full ease"
+              class="absolute flex items-center justify-center w-full h-full transition-all duration-300 transform group-hover:translate-x-full ease text-paragraph"
               >Sign up</span
             >
-            <span class="relative invisible">Sign up</span>
+            <span class="relative invisible text-paragraph">Sign up</span>
           </app-button>
 
           <span class="flex items-center justify-center mt-5">
-            <a routerLink="/sign-in" rou class="text-sm hover:underline"
+            <a
+              routerLink="/sign-in"
+              class="text-sm hover:underline text-paragraph"
               >Already registered?</a
             >
           </span>
         </section>
       </form>
 
-      <aside class="">
-        <div class="bg-gray-100 p-8 rounded">
-          <h2 class="font-bold text-2xl">Instructions</h2>
-          <ul class="list-disc mt-4 list-inside">
+      <aside>
+        <div class="p-8 rounded">
+          <h2 class="font-bold text-2xl text-headline">Instructions</h2>
+          <ul class="list-disc mt-4 list-inside text-paragraph">
             <li>
               All users must provide a valid email address and password to
               create an account.

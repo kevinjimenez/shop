@@ -1,23 +1,25 @@
-<div class="p-6 bg-gray-100 relative rounded shadow flex flex-col">
-  <h1 class="text-xl">{{ product()?.title }}</h1>
-  <hr class="h-px bg-gray-300 border-0" />
+<main class="p-6 bg-gray-100 relative rounded shadow flex flex-col">
+  <h1 class="font-bold text-headline text-xl">{{ product()?.title }}</h1>
+  <hr class="h-px bg-main border-0" />
   <section class="flex flex-col items-center gap-y-3 py-3">
     <picture class="relative">
       <app-image
         [name]="product()?.image"
         customClass="image size-36 w-full object-contain aspect-video " />
       <span
-        class="absolute right-0 top-0 text-xs font-light bg-green-300 px-0.5 rounded-sm"
-        >{{ product()?.price | currency }}</span
-      >
+        class="absolute flex right-0 top-0 text-xs font-light bg-main text-paragraph px-0.5 rounded-sm gap-x-1 items-center">
+        <app-image name="tag.svg" class="size-3" />
+        {{ product()?.price | currency }}
+      </span>
     </picture>
-    <article class="w-full flex flex-wrap">
-      <span class="text-[0.6rem] text-neutral-600 font-light">
+    <section
+      class="w-full flex flex-col bg-background px-5 py-2 rounded-md gap-y-2 border border-main">
+      <span class="text-[0.6rem] text-paragraph font-light">
         {{ product()?.category | titlecase }}
       </span>
-      <p class="text-xs">{{ product()?.description }}</p>
-    </article>
-    <section class="w-full flex flex-col items-center justify-center gap-y-2">
+      <p class="text-paragraph text-pretty text-sm">
+        {{ product()?.description }}
+      </p>
       <form class="w-full flex items-center gap-x-3">
         <section class="relative flex items-center max-w-[11rem]">
           <app-button
@@ -52,4 +54,4 @@
         (onClick)="onClose()" />
     </section>
   </section>
-</div>
+</main>
