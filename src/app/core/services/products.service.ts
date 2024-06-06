@@ -10,9 +10,9 @@ import { Product } from '../models/product.model';
 export class ProductsService {
   readonly #httpClient = inject(HttpClient);
 
-  getAll() {
+  getAll(limit = 5) {
     return this.#httpClient
-      .get<Product[]>('https://fakestoreapi.com/products')
+      .get<Product[]>(`https://fakestoreapi.com/products?limit=${limit}`)
       .pipe(catchError(this.handleErrorResponse));
   }
 
@@ -22,9 +22,10 @@ export class ProductsService {
       .pipe(catchError(this.handleErrorResponse));
   }
 
-  getByCategory(category: string) {
+  getByCategory(category?: string) {
+    if (!category) return this.getAll();
     return this.#httpClient
-      .get<Product>('https://fakestoreapi.com/products/category/' + category)
+      .get<Product[]>(`https://fakestoreapi.com/products/category/${category}`)
       .pipe(catchError(this.handleErrorResponse));
   }
 

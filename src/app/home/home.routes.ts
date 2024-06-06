@@ -6,9 +6,9 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () => import('./home.component').then(m => m.HomeComponent),
-    // resolve: {
-    //   products: productsResolver,
-    // },
+    resolve: {
+      products: productsResolver,
+    },
   },
   {
     path: 'product/:id',

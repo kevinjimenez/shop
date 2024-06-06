@@ -14,7 +14,13 @@
       </a>
       <div class="flex items-center gap-x-4">
         <div class="flex items-center gap-x-4">
-          <p class="text-xs font-light">Saldo: {{ 12 | currency }}</p>
+          <section class="flex flex-col items-end justify-center">
+            <p class="text-sm font-light">Kevin Orlando Jimenez Saraguro</p>
+            <article class="flex items-center gap-x-1">
+              <app-money-bag iconClass="size-3.5 text-blue-500" />
+              <p class="text-xs font-light">Saldo: {{ 12 | currency }}</p>
+            </article>
+          </section>
           <app-image name="avatar-kamaleon.png" customClass="size-10" />
         </div>
         <div class="relative">

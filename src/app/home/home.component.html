@@ -1,9 +1,15 @@
 @if (!hasError().error) {
   <main class="w-full flex flex-col items-center justify-center p-2">
     <section class="w-full flex gap-2 px-3">
-      <span class="rounded-full px-2 py-0.5 text-xs bg-blue-200"> All </span>
+      <span
+        class="rounded-full px-2 py-0.5 text-xs bg-blue-200 cursor-pointer"
+        (click)="changeCategory()">
+        All
+      </span>
       @for (category of categories(); track $index) {
-        <span class="rounded-full px-2 py-0.5 text-xs bg-blue-200">
+        <span
+          (click)="changeCategory(category)"
+          class="rounded-full px-2 py-0.5 text-xs bg-blue-200 cursor-pointer">
           {{ category | titlecase }}
         </span>
       }
@@ -49,7 +55,10 @@
         </section>
       }
     </section>
-    <app-button text="View more" customClass="rounded py-1.5 px-8" />
+    <app-button
+      text="View more"
+      customClass="rounded py-1.5 px-8"
+      (onClick)="loadMore()" />
   </main>
 } @else {
   <app-lost-connection />
