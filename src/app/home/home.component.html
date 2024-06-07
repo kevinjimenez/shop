@@ -38,13 +38,14 @@
                 {{ product.price | currency }}
               </p>
             </span>
-            <article class="flex items-center justify-center pt-3 gap-x-2">
+            <article
+              class="flex items-center justify-center pt-3 gap-x-2 flex-col sm:flex-row gap-y-2 md:gap-y-0">
               <app-button
                 customClass="rounded text-sm px-5 py-1.5"
                 (onClick)="productQuantity(product)"
                 text="View details" />
               <app-button
-                customClass="rounded-full text-xs p-2"
+                customClass="rounded sm:rounded-full text-xs p-2"
                 [icon]="{
                   name: 'shopping-cart-plus.svg',
                   sizeClass: 'size-4'
@@ -53,16 +54,17 @@
           </div>
         </section>
       } @empty {
-        <section
-          class="col-span-1 md:col-span-2 lg:col-span-3 place-self-center h-dvh">
-          <app-image name="empty.svg" />
+        <section class="col-span-3 place-self-center w-full text-center">
+          <app-mood-empty iconClass="size-56 sm:size-96 text-red-500" />
         </section>
       }
     </section>
-    <app-button
-      text="View more"
-      customClass="rounded py-1.5 px-8"
-      (onClick)="loadMore()" />
+    @if (products().length > 0) {
+      <app-button
+        text="View more"
+        customClass="rounded py-1.5 px-8"
+        (onClick)="loadMore()" />
+    }
   </main>
 } @else {
   <app-lost-connection />

@@ -13,6 +13,7 @@ import { ProductsService } from '../core/services/products.service';
 import { ProductQuantityComponent } from './modals/product-quantity/product-quantity.component';
 import { CategoriesService } from '../core/services/categories.service';
 import { HeaderComponent } from './components/header/header.component';
+import { MoodEmptyComponent } from '../components/svg/mood-empty.component';
 
 @Component({
   selector: 'app-home',
@@ -24,6 +25,7 @@ import { HeaderComponent } from './components/header/header.component';
     ButtonComponent,
     ImageComponent,
     HeaderComponent,
+    MoodEmptyComponent,
   ],
   templateUrl: './home.component.html',
 })

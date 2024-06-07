@@ -1,4 +1,5 @@
-<main class="p-6 bg-gray-100 relative rounded shadow flex flex-col">
+<main
+  class="p-6 bg-gray-100 relative rounded shadow flex flex-col mx-2 sm:mx-0">
   <h1 class="font-bold text-headline text-xl">{{ product()?.title }}</h1>
   <hr class="h-px bg-main border-0" />
   <section class="flex flex-col items-center gap-y-3 py-3">
@@ -20,7 +21,8 @@
       <p class="text-paragraph text-pretty text-sm">
         {{ product()?.description }}
       </p>
-      <form class="w-full flex items-center gap-x-3">
+      <form
+        class="w-full flex items-center gap-x-3 gap-y-3 sm:gap-y-0 flex-col sm:flex-row">
         <section class="relative flex items-center max-w-[11rem]">
           <app-button
             (onClick)="onDecrement()"
@@ -41,7 +43,7 @@
             customClass="bg-green-500 rounded-lg px-2 py-1" />
         </section>
         <app-button
-          class="grow"
+          class="grow w-full"
           text="Add cart"
           customClass="rounded py-1.5 px-2 w-full"
           [icon]="{ name: 'shopping-cart-plus.svg', left: true }" />

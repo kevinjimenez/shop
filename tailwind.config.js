@@ -11,6 +11,8 @@ module.exports = {
         secundary: '#8bd3dd',
         tertiary: '#f582ae',
         highlight: '#fef6e4',
+        success: '#078080',
+        danger: '#e45858'
       },
     },
   },
