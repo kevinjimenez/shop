@@ -1,13 +1,11 @@
-<section [class]="containerClass()">
+<section [class]="classContainer">
   @if (customContend()) {
     <ng-content></ng-content>
   } @else {
-    <label
-      [for]="label()"
-      class="block mb-2 text-sm font-medium text-paragraph"
-      >{{ label() }}</label
+    <label [for]="label()" class="block mb-2 text-sm font-medium text-paragraph"
+      >{{ label() }} {{ required() ? '*' : '' }}</label
     >
-    <article [ngClass]="{ 'relative mb-3': prefixIcon() }">
+    <article [ngClass]="{ relative: prefixIcon() }">
       @if (prefixIcon()) {
         <picture
           class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
@@ -20,7 +18,8 @@
         "
         [id]="label()"
         class="bg-background border-none text-paragraph text-sm rounded-md focus:ring-transparent focus:border-transparent block w-full p-2.5"
-        [ngClass]="InputClass"
+        [ngClass]="inputClass"
+        [formControl]="control()"
         [placeholder]="placeholder()" />
 
       @if (inputType() === 'password') {
@@ -29,10 +28,18 @@
           class="absolute inset-y-0 end-0 flex items-center pe-3.5"
           (click)="onShowPassword()">
           <app-image
-            [name]="!showPassword() ? 'eye.svg' : 'eye-off.svg'"
+            [name]="!showPassword() ? 'beer.svg' : 'beer-off.svg'"
             customClass="size-6" />
         </button>
       }
     </article>
+  }
+  @if (invalidField) {
+    <span class="flex mt-0.5">
+      <p
+        class="text-xs text-paragraph py-1 px-2 rounded-md w-full scale-up-top-left">
+        {{ errorMessage }}
+      </p>
+    </span>
   }
 </section>

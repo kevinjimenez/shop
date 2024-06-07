@@ -1,4 +1,4 @@
-<main class="flex pt-2 md:pt-0 md:h-screen">
+<main class="flex pt-2">
   <section class="w-full md:w-1/2 flex items-center justify-center">
     <article
       class="flex flex-col items-center justify-center w-full sm:w-96 bg-main p-5 mx-3 md:mx-0 min-w-[20rem] rounded-lg">
@@ -9,16 +9,21 @@
         class="flex items-center justify-center text-3xl font-bold my-5 text-headline">
         Login
       </h1>
-      <form class="w-full">
+      <form [formGroup]="loginForm" class="w-full" (ngSubmit)="onSubmit()">
         <app-input
           label="Your Email"
+          [control]="loginForm.controls.email"
+          [required]="true"
           placeholder="name@flowbite.com"
-          prefixIcon="password.svg" />
+          prefixIcon="main.svg" />
 
         <app-input
-          label="Username"
+          label="Your Password"
           placeholder="elonmusk"
-          prefixIcon="user-edit.svg" />
+          [required]="true"
+          [control]="loginForm.controls.password"
+          inputType="password"
+          prefixIcon="password-user.svg" />
 
         <span class="flex mt-4">
           <a href="#" class="text-sm hover:underline text-paragraph"
@@ -27,12 +32,12 @@
         </span>
 
         <app-button
+          type="submit"
           [customContend]="true"
-          (onClick)="redirecToHome()"
           customClass="w-full relative inline-flex items-center justify-center px-3 py-2 overflow-hidden transition duration-300 ease-out rounded group mt-4">
           <span
             class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-main group-hover:translate-x-0 ease border-2 border-tertiary">
-            <app-image name="arrow-narrow-right.svg" customClass="size-6" />
+            <app-image name="arrow-right-to-arc.svg" customClass="size-5" />
           </span>
           <span
             class="absolute flex items-center justify-center w-full h-full transition-all duration-300 transform group-hover:translate-x-full ease text-paragraph"
@@ -46,7 +51,7 @@
             routerLink="/sign-up"
             rou
             class="text-sm hover:underline text-paragraph"
-            >Forgot Password?</a
+            >Don't have an account?</a
           >
         </span>
       </form>

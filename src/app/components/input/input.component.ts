@@ -1,13 +1,15 @@
-import { Component, input, model, output, signal } from '@angular/core';
-import { ImageComponent } from '../image/image.component';
 import { NgClass } from '@angular/common';
+import { Component, input, signal } from '@angular/core';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { CustomValiationForm } from '../../utils/customValidationForm';
+import { ImageComponent } from '../image/image.component';
 
 export type InputType = 'text' | 'number' | 'password';
 
 @Component({
   selector: 'app-input',
   standalone: true,
-  imports: [ImageComponent, NgClass],
+  imports: [ImageComponent, NgClass, ReactiveFormsModule],
   templateUrl: './input.component.html',
 })
 export class InputComponent {
@@ -20,13 +22,30 @@ export class InputComponent {
   public customContend = input<boolean>(false);
   public containerClass = input<string>();
   public showPassword = signal<boolean>(false);
+  public control = input<FormControl>(new FormControl());
+  public required = input<boolean>(false);
 
-  protected get InputClass() {
+  protected get inputClass() {
     return {
       'ps-10': (this.prefixIcon() ?? null) !== null,
       'pe-10': this.inputType() === 'password',
       [this.customClass() ?? '']: this.customClass() !== null,
     };
+  }
+
+  protected get classContainer() {
+    return {
+      [this.containerClass() ?? 'mb-3']: this.containerClass() !== null,
+    };
+  }
+
+  protected get invalidField() {
+    return this.control().touched && this.control().invalid;
+  }
+
+  protected get errorMessage(): string | null {
+    if (!this.control() && !this.control().errors) return null;
+    return CustomValiationForm.message(this.control().errors!, this.label());
   }
 
   public onShowPassword() {

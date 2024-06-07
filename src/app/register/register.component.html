@@ -27,31 +27,37 @@
         class="w-full flex items-center justify-start text-3xl font-bold my-5 text-headline">
         Register
       </h1>
-      <form class="w-full">
+      <form [formGroup]="registerForm" class="w-full" (ngSubmit)="onSubmit()">
         <app-input
-          label="Name"
+          label="Your Name"
           placeholder="name@flowbite.com"
-          prefixIcon="password.svg" />
-
-        <app-input
-          label="Email"
-          placeholder="elonmusk"
+          [required]="true"
+          [control]="registerForm.controls.name"
           prefixIcon="user-edit.svg" />
 
         <app-input
-          label="Password"
+          label="Your Email"
+          placeholder="elonmusk"
+          [required]="true"
+          [control]="registerForm.controls.email"
+          prefixIcon="main.svg" />
+
+        <app-input
+          label="Your Password"
           inputType="password"
           placeholder="elonmusk"
-          prefixIcon="user-edit.svg" />
+          [required]="true"
+          [control]="registerForm.controls.password"
+          prefixIcon="password-user.svg" />
 
         <section class="flex items-center justify-between">
           <app-button
+            type="submit"
             [customContend]="true"
-            (onClick)="redirecToHome()"
             customClass="w-full relative inline-flex items-center justify-center px-16 py-2 overflow-hidden transition duration-300 ease-out rounded group mt-4">
             <span
               class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-main group-hover:translate-x-0 ease border-2 border-tertiary">
-              <app-image name="arrow-narrow-right.svg" customClass="size-5" />
+              <app-image name="arrow-right-to-arc.svg" customClass="size-5" />
             </span>
             <span
               class="absolute flex items-center justify-center w-full h-full transition-all duration-300 transform group-hover:translate-x-full ease text-paragraph"
