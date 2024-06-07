@@ -1,6 +1,6 @@
+import { CurrencyPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { ImageComponent } from '../../../components/image/image.component';
-import { CurrencyPipe } from '@angular/common';
 import { MoneyBagComponent } from '../../../components/svg/money-bag.component';
 
 @Component({

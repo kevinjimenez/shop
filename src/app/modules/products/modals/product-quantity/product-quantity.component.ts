@@ -1,11 +1,11 @@
-import { Component, Inject, signal, inject } from '@angular/core';
-import { ImageComponent } from '../../../components/image/image.component';
-import { CurrencyPipe, TitleCasePipe } from '@angular/common';
-import { StarComponent } from '../../../components/svg/star.component';
-import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ButtonComponent } from '../../../components/button/button.component';
 import { DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
-import { Product } from '../../../core/models/product.model';
+import { CurrencyPipe, TitleCasePipe } from '@angular/common';
+import { Component, Inject, inject, signal } from '@angular/core';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ButtonComponent } from '../../../../components/button/button.component';
+import { ImageComponent } from '../../../../components/image/image.component';
+import { StarComponent } from '../../../../components/svg/star.component';
+import { Product } from '../../../../core/models/product.model';
 
 @Component({
   selector: 'app-product-quantity',

@@ -1,0 +1,37 @@
+<section
+  class="w-full flex flex-col items-center gap-x-2 border-2 border-main rounded p-1">
+  <picture
+    class="p-2 w-full bg-gray-50/80 rounded"
+    (click)="viewDetailsProduct(product())">
+    <app-image
+      [name]="product().image"
+      customClass="size-36 w-full object-contain aspect-video image" />
+  </picture>
+  <div class="w-full px-2">
+    <span class="text-[0.6rem] text-paragraph font-light">
+      {{ product().category | titlecase }}
+    </span>
+    <h5 class="text-start text-pretty font-bold text-sm text-headline">
+      {{ product().title }}
+    </h5>
+    <span class="flex items-center justify-start py-1">
+      <app-image name="tag.svg" class="size-4" />
+      <p class="rounded text-[0.95rem] px-1 py-0.5 text-headline">
+        {{ product().price | currency }}
+      </p>
+    </span>
+    <article
+      class="flex items-center justify-center pt-3 gap-x-2 flex-col sm:flex-row gap-y-2 md:gap-y-0">
+      <app-button
+        customClass="rounded text-sm px-5 py-1.5"
+        (onClick)="productQuantity(product())"
+        text="View details" />
+      <app-button
+        customClass="rounded sm:rounded-full text-xs p-2"
+        [icon]="{
+          name: 'shopping-cart-plus.svg',
+          sizeClass: 'size-4'
+        }" />
+    </article>
+  </div>
+</section>
