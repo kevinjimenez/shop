@@ -1,6 +1,6 @@
+import { NgClass } from '@angular/common';
 import { Component, input } from '@angular/core';
 import { ImagePipe } from '../../pipes/image.pipe';
-import { JsonPipe, NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-image',
