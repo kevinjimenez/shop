@@ -33,6 +33,7 @@
         </p>
       </span>
       <app-button
+        (onClick)="addToCart(product()!)"
         text="Add cart"
         customClass="rounded py-2 px-5"
         [icon]="{ name: 'shopping-cart-plus.svg', left: true }" />

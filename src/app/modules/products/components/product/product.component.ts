@@ -1,5 +1,5 @@
 import { CurrencyPipe, TitleCasePipe } from '@angular/common';
-import { Component, OnInit, inject, input, signal } from '@angular/core';
+import { Component, inject, input, signal } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
 import { ButtonComponent } from '../../../../components/button/button.component';
 import { ImageComponent } from '../../../../components/image/image.component';
@@ -7,6 +7,7 @@ import { StarComponent } from '../../../../components/svg/star.component';
 import { ErrorResponse } from '../../../../core/models/error-response.mode';
 import { Product } from '../../../../core/models/product.model';
 import { ProductsService } from '../../../../core/services/products.service';
+import { CartStore } from '../../../../store/project.store';
 
 @Component({
   selector: 'app-product',
@@ -21,7 +22,8 @@ import { ProductsService } from '../../../../core/services/products.service';
   templateUrl: './product.component.html',
 })
 export class ProductComponent {
-  readonly productsService = inject(ProductsService);
+  private readonly productsService = inject(ProductsService);
+  private readonly cartStore = inject(CartStore);
   public product = signal<Product | null>(null);
   public hasError = signal({ error: false, message: '' });
 
@@ -45,5 +47,11 @@ export class ProductComponent {
           this.product.set(product);
         },
       });
+  }
+
+  public addToCart(product: Product) {
+    console.log();
+
+    this.cartStore.addToCart(product);
   }
 }
