@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import LayoutComponent from './layout/layout.component';
+import { exitGuard } from './guards/exit.guard';
 
 export const routes: Routes = [
   {
@@ -24,6 +25,7 @@ export const routes: Routes = [
   },
   {
     path: 'sign-up',
+    canDeactivate: [exitGuard],
     loadComponent: () =>
       import('./register/register.component').then(m => m.default),
   },

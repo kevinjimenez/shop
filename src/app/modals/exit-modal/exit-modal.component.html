@@ -1,0 +1,30 @@
+<main class="p-6 bg-gray-100 rounded shadow flex flex-col mx-2 sm:mx-0">
+  <section class="w-full flex flex-col items-center justify-center">
+    <app-alet-triangle
+      iconClass="size-12 text-red-500"
+      continerClass="bg-red-200 w-full flex p-2 rounded-full" />
+  </section>
+
+  <section
+    class="w-full flex flex-col items-center justify-center gap-y-2 my-2">
+    <h2 class="text-xl font-semibold text-headline">
+      Are you sure you want to exit?
+    </h2>
+
+    <h4 class="text-lg font-normal text-paragraph text-pretty">
+      This action will not be able to be undone
+    </h4>
+  </section>
+
+  <app-button
+    (onClick)="onConfirm()"
+    color="success"
+    customClass="w-full flex rounded-md text-white py-2 mt-2"
+    text="Accept" />
+
+  <app-button
+    (onClick)="onCancel()"
+    color="danger"
+    customClass="w-full flex rounded-md bg-red-300 py-2 mt-3"
+    text="Cancel" />
+</main>

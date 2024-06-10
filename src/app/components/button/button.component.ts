@@ -31,8 +31,8 @@ export class ButtonComponent {
 
   private get buttonColor() {
     return {
-      'bg-green-600 hover:bg-green-800/80': this.color() === 'success',
-      'bg-danger/90 hover:bg-danger text-white': this.color() === 'danger',
+      'bg-success/80 hover:bg-success text-white': this.color() === 'success',
+      'bg-danger/95 hover:bg-danger text-white': this.color() === 'danger',
       'bg-tertiary text-headline font-semibold': this.color() === 'primary',
       'bg-white hover:bg-gray-100': this.color() === '',
     };
