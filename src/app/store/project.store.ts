@@ -24,16 +24,11 @@ export const CartStore = signalStore(
   { providedIn: 'root' },
   withState(initialState),
   withComputed(({ products }) => ({
-    productsCount: computed(() => {
-      console.log({ products });
-
-      return products.length;
-    }),
+    productsCount: computed(() => products().length),
     totalAmount: computed(() => 0),
   })),
   withMethods(({ products, ...store }) => ({
     addToCart(product: Product) {
-      console.log({ product });
       patchState(store, { products: [...products(), product] });
     },
   }))

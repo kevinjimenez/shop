@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
+import { exitGuard } from './core/guards/exit.guard';
 import LayoutComponent from './layout/layout.component';
-import { exitGuard } from './guards/exit.guard';
 
 export const routes: Routes = [
   {
@@ -12,26 +12,23 @@ export const routes: Routes = [
         loadChildren: () =>
           import('./modules/home/home.routes').then(m => m.routes),
       },
-      // {
-      //   path: '',
-      //   redirectTo: 'main',
-      //   pathMatch: 'full',
-      // },
     ],
   },
   {
     path: 'sign-in',
-    loadComponent: () => import('./login/login.component').then(m => m.default),
+    loadComponent: () =>
+      import('./pages/login/login.component').then(m => m.default),
   },
   {
     path: 'sign-up',
     canDeactivate: [exitGuard],
     loadComponent: () =>
-      import('./register/register.component').then(m => m.default),
+      import('./pages/register/register.component').then(m => m.default),
   },
   {
     path: 'main',
-    loadComponent: () => import('./main/main.component').then(m => m.default),
+    loadComponent: () =>
+      import('./pages/main/main.component').then(m => m.default),
   },
   {
     path: '',
@@ -41,6 +38,6 @@ export const routes: Routes = [
   {
     path: '**',
     loadComponent: () =>
-      import('./not-found/not-found.component').then(m => m.default),
+      import('./pages/not-found/not-found.component').then(m => m.default),
   },
 ];

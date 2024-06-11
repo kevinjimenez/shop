@@ -1,19 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
+import { environment } from '../../../environments/environment';
 import { catchError, throwError } from 'rxjs';
 import { ErrorResponse } from '../models/error-response.model';
-import { environment } from '../../../environments/environment';
+import { Login } from '../models/login.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CategoriesService {
+export class AuthService {
   private readonly _httpClient = inject(HttpClient);
 
-  getAll() {
-    const url = `${environment.apiUrl}/products/categories`;
+  signIn(payload: Login) {
+    const url = `${environment.apiUrl}/auth/login`;
     return this._httpClient
-      .get<string[]>(url)
+      .post<{ token: string }>(url, payload)
       .pipe(catchError(this.handleErrorResponse));
   }
 

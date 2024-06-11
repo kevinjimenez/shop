@@ -1,3 +1,4 @@
+import { apiInterceptor } from './core/interceptors/api.interceptor';
 import {
   ApplicationConfig,
   importProvidersFrom,
@@ -23,7 +24,11 @@ export const appConfig: ApplicationConfig = {
     // provideZoneChangeDetection({ eventCoalescing: true }),
     provideExperimentalZonelessChangeDetection(),
     provideHttpClient(
-      withInterceptors([errorResponseInterceptor, loadingInterceptor])
+      withInterceptors([
+        loadingInterceptor,
+        apiInterceptor,
+        errorResponseInterceptor,
+      ])
     ),
     provideRouter(
       routes,

@@ -10,10 +10,6 @@ export const loadingInterceptor: HttpInterceptorFn = (req, next) => {
   console.log('loadingInterceptor');
 
   const loadingService = inject(LoadingService);
-  console.log({ activeRquest: activeRquest() });
-
-  // loadingService.show();
-  // return next(req).pipe(finalize(() => loadingService.hide()));
 
   if (activeRquest() === 0) loadingService.show();
   activeRquest.update(cunrrent => cunrrent + 1);

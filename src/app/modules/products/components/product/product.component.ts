@@ -1,12 +1,12 @@
 import { CurrencyPipe, TitleCasePipe } from '@angular/common';
 import { Component, inject, input, signal } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
-import { ButtonComponent } from '../../../../components/button/button.component';
-import { ImageComponent } from '../../../../components/image/image.component';
-import { StarComponent } from '../../../../components/svg/star.component';
-import { ErrorResponse } from '../../../../core/models/error-response.mode';
+import { ErrorResponse } from '../../../../core/models/error-response.model';
 import { Product } from '../../../../core/models/product.model';
 import { ProductsService } from '../../../../core/services/products.service';
+import { ButtonComponent } from '../../../../shared/components/button/button.component';
+import { ImageComponent } from '../../../../shared/components/image/image.component';
+import { StarComponent } from '../../../../shared/components/svg/star.component';
 import { CartStore } from '../../../../store/project.store';
 
 @Component({
@@ -50,8 +50,6 @@ export class ProductComponent {
   }
 
   public addToCart(product: Product) {
-    console.log();
-
     this.cartStore.addToCart(product);
   }
 }

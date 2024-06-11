@@ -3,15 +3,14 @@ import { Component, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { catchError, throwError } from 'rxjs';
-
-import { ButtonComponent } from '../../components/button/button.component';
-import { ImageComponent } from '../../components/image/image.component';
-import { LostConnectionComponent } from '../../components/lost-connection/lost-connection.component';
-import { MoodEmptyComponent } from '../../components/svg/mood-empty.component';
-import { ErrorResponse } from '../../core/models/error-response.mode';
+import { ErrorResponse } from '../../core/models/error-response.model';
 import { Product } from '../../core/models/product.model';
 import { CategoriesService } from '../../core/services/categories.service';
 import { ProductsService } from '../../core/services/products.service';
+import { ButtonComponent } from '../../shared/components/button/button.component';
+import { ImageComponent } from '../../shared/components/image/image.component';
+import { LostConnectionComponent } from '../../shared/components/lost-connection/lost-connection.component';
+import { MoodEmptyComponent } from '../../shared/components/svg/mood-empty.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 
 @Component({
@@ -72,7 +71,6 @@ export class ProductsComponent {
   }
 
   loadMore() {
-    this.products.update(() => []);
     this.limit.update(cunrrent => cunrrent + 5);
 
     this.productsService

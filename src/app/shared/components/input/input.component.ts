@@ -1,8 +1,8 @@
 import { NgClass } from '@angular/common';
 import { Component, input, signal } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { CustomValiationForm } from '../../utils/custom-validation-form';
 import { ImageComponent } from '../image/image.component';
+import { CustomValiationForm } from '../../../utils/custom-validation-form';
 
 export type InputType = 'text' | 'number' | 'password';
 

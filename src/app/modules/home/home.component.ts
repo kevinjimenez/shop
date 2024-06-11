@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ImageComponent } from '../../components/image/image.component';
+import { ImageComponent } from '../../shared/components/image/image.component';
 
 @Component({
   selector: 'app-home',

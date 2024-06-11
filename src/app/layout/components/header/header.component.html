@@ -1,7 +1,6 @@
 <header>
-  {{ cartStore.productsCount() }}
   <nav class="bg-main border-gray-200 px-4 lg:px-6 py-2.5">
-    <div
+    <section
       class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
       <a href="#" class="flex items-center">
         <img
@@ -13,8 +12,8 @@
           >Flowbite</span
         >
       </a>
-      <div class="flex items-center gap-x-4">
-        <div class="flex items-center gap-x-4">
+      <article class="flex items-center gap-x-4">
+        <section class="flex items-center gap-x-4">
           <section
             class="sm:flex sm:flex-col sm:items-end sm:justify-center hidden sm:visible">
             <p class="text-sm font-normal text-paragraph">
@@ -28,15 +27,43 @@
             </article>
           </section>
           <app-image name="avatar.svg" customClass="size-10" />
-        </div>
-        <div class="relative">
+        </section>
+        <section
+          (click)="isOpen = !isOpen"
+          class="relative"
+          #editOverlay="cdkOverlayOrigin"
+          cdkOverlayOrigin>
           <app-image name="shopping-bag.svg" />
           <div
             class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-3 -end-3">
-            {{ cartStore.products().length }}
+            {{ cartStore.productsCount() }}
           </div>
-        </div>
-      </div>
-    </div>
+        </section>
+      </article>
+    </section>
   </nav>
 </header>
+
+<ng-template
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOrigin]="editOverlay"
+  [cdkConnectedOverlayOpen]="isOpen"
+  (overlayOutsideClick)="isOpen = !isOpen">
+  <div
+    class="z-50 w-72 text-base list-none bg-white rounded divide-y divide-gray-100 shadow">
+    <header
+      class="py-3 px-4 relative flex items-center justify-center border-b-2">
+      <span class="text-sm text-center text-gray-900"> Cart </span>
+      <button>X</button>
+    </header>
+    <section class="px-3 pt-3 pb-1 h-96 overflow-y-auto">
+      <ul>
+        @for (product of cartStore.products(); track $index) {
+          <li>
+            {{ product.title }}
+          </li>
+        }
+      </ul>
+    </section>
+  </div>
+</ng-template>

@@ -1,12 +1,11 @@
 import { Component, HostListener, inject } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
-import { InputComponent } from '../components/input/input.component';
-import { ButtonComponent } from '../components/button/button.component';
-import { ImageComponent } from '../components/image/image.component';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CanComponentDeactive } from '../guards/exit.guard';
+import { Router, RouterModule } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ConfirmModals } from '../utils/confirm-modals';
+import { CanComponentDeactive } from '../../core/guards/exit.guard';
+import { ButtonComponent } from '../../shared/components/button/button.component';
+import { ImageComponent } from '../../shared/components/image/image.component';
+import { InputComponent } from '../../shared/components/input/input.component';
 
 @Component({
   selector: 'app-register',
@@ -25,7 +24,13 @@ export default class RegisterComponent implements CanComponentDeactive {
   private readonly formBuilder = inject(FormBuilder);
 
   public registerForm = this.formBuilder.group({
-    name: ['', [Validators.required]],
+    name: [
+      '',
+      {
+        nonNullable: true, // similar al NonNullableFormBuilder
+        validators: [Validators.required],
+      },
+    ],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required]],
   });
@@ -35,7 +40,7 @@ export default class RegisterComponent implements CanComponentDeactive {
       control => control.value !== ''
     );
 
-    return isValidRegisterForm;
+    return isValidRegisterForm && this.registerForm.invalid;
   }
 
   public redirecToSignIn(): void {

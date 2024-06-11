@@ -1,4 +1,9 @@
-<main class="flex h-screen items-center justify-center">
+<main class="flex h-screen items-center justify-center relative">
+  <span
+    class="absolute top-0 left-0 bg-secundary/50 border text-headline p-1 rounded-lg m-1">
+    <p class="text-xs">Username: mor_2314</p>
+    <p class="text-xs">Password: 83r5^_</p>
+  </span>
   <section class="w-full md:w-1/2 flex items-center justify-center">
     <article
       class="flex flex-col items-center justify-center w-full sm:w-96 bg-main p-5 mx-3 md:mx-0 min-w-[20rem] rounded-lg">
@@ -9,11 +14,11 @@
       </h1>
       <form [formGroup]="loginForm" class="w-full" (ngSubmit)="onSubmit()">
         <app-input
-          label="Your Email"
-          [control]="loginForm.controls.email"
+          label="Your Username"
+          [control]="loginForm.controls.username"
           [required]="true"
-          placeholder="name@flowbite.com"
-          prefixIcon="main.svg" />
+          placeholder="elonmusk"
+          prefixIcon="user-edit.svg" />
 
         <app-input
           label="Your Password"

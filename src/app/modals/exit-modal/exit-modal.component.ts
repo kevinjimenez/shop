@@ -1,7 +1,7 @@
 import { DialogRef } from '@angular/cdk/dialog';
 import { Component, inject } from '@angular/core';
-import { AlertTriangleComponent } from '../../components/svg/alert-triangle.component';
-import { ButtonComponent } from '../../components/button/button.component';
+import { ButtonComponent } from '../../shared/components/button/button.component';
+import { AlertTriangleComponent } from '../../shared/components/svg/alert-triangle.component';
 
 @Component({
   selector: 'app-exit-modal',

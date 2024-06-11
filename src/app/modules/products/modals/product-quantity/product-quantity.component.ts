@@ -2,10 +2,10 @@ import { DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
 import { CurrencyPipe, TitleCasePipe } from '@angular/common';
 import { Component, Inject, inject, signal } from '@angular/core';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ButtonComponent } from '../../../../components/button/button.component';
-import { ImageComponent } from '../../../../components/image/image.component';
-import { StarComponent } from '../../../../components/svg/star.component';
 import { Product } from '../../../../core/models/product.model';
+import { ButtonComponent } from '../../../../shared/components/button/button.component';
+import { ImageComponent } from '../../../../shared/components/image/image.component';
+import { StarComponent } from '../../../../shared/components/svg/star.component';
 
 @Component({
   selector: 'app-product-quantity',
@@ -21,7 +21,7 @@ import { Product } from '../../../../core/models/product.model';
   templateUrl: './product-quantity.component.html',
 })
 export class ProductQuantityComponent {
-  public dialogRef = inject(DialogRef<Product>);
+  public dialogRef = inject(DialogRef<number>);
   public quantity = new FormControl<number>(0, [Validators.required]);
 
   public product = signal<Product | null>(null);
@@ -43,6 +43,10 @@ export class ProductQuantityComponent {
     if (this.quantity.value === null) return;
     this.count.set(Number(this.quantity.value) + 1);
     this.quantity.setValue(this.count());
+  }
+
+  public addToCart() {
+    this.dialogRef.close(this.quantity.value ?? 0);
   }
 
   public onClose() {

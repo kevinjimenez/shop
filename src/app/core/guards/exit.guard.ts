@@ -1,6 +1,6 @@
 import { CanDeactivateFn } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ConfirmModals } from '../utils/confirm-modals';
+import { ConfirmModals } from '../../utils/confirm-modals';
 
 export interface CanComponentDeactive {
   canDeactivate: () => Observable<boolean> | boolean;
