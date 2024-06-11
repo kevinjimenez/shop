@@ -28,11 +28,7 @@
           </section>
           <app-image name="avatar.svg" customClass="size-10" />
         </section>
-        <section
-          (click)="isOpen = !isOpen"
-          class="relative"
-          #editOverlay="cdkOverlayOrigin"
-          cdkOverlayOrigin>
+        <section (click)="openCart.emit()" class="relative cursor-pointer">
           <app-image name="shopping-bag.svg" />
           <div
             class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-3 -end-3">
@@ -43,27 +39,3 @@
     </section>
   </nav>
 </header>
-
-<ng-template
-  cdkConnectedOverlay
-  [cdkConnectedOverlayOrigin]="editOverlay"
-  [cdkConnectedOverlayOpen]="isOpen"
-  (overlayOutsideClick)="isOpen = !isOpen">
-  <div
-    class="z-50 w-72 text-base list-none bg-white rounded divide-y divide-gray-100 shadow">
-    <header
-      class="py-3 px-4 relative flex items-center justify-center border-b-2">
-      <span class="text-sm text-center text-gray-900"> Cart </span>
-      <button>X</button>
-    </header>
-    <section class="px-3 pt-3 pb-1 h-96 overflow-y-auto">
-      <ul>
-        @for (product of cartStore.products(); track $index) {
-          <li>
-            {{ product.title }}
-          </li>
-        }
-      </ul>
-    </section>
-  </div>
-</ng-template>
