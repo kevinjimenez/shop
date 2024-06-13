@@ -29,3 +29,34 @@
   }
 }
 
+
+
+/* .custom-snackbar {
+  .mat-mdc-snack-bar-container .mdc-snackbar__surface {
+    border-radius: 8px !important;
+  }
+
+  .mat-mdc-button.mat-mdc-snack-bar-action {
+    color: white !important;
+  }
+} */
+
+.snackbar-success {
+  .mdc-snackbar__surface {
+    background-color: #078080 !important;
+  }
+
+  /* .mdc-snackbar__label {
+    color: white !important;
+  } */
+}
+
+.snackbar-danger {
+  .mdc-snackbar__surface {
+    background-color: #e45858 !important;
+  }
+
+  /* .mdc-snackbar__label {
+    color: white !important;
+  } */
+}

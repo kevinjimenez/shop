@@ -26,7 +26,8 @@
           <app-button
             (onClick)="removeProduct(product.id)"
             [icon]="{ name: 'trash-x.svg' }"
-            color="" />
+            color=""
+            customClass="rounded-full p-1" />
         </li>
       } @empty {
         <app-shopping-cart-off
