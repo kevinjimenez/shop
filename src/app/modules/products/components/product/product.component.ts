@@ -7,7 +7,8 @@ import { ProductsService } from '../../../../core/services/products.service';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { ImageComponent } from '../../../../shared/components/image/image.component';
 import { StarComponent } from '../../../../shared/components/svg/star.component';
-import { CartStore } from '../../../../store/project.store';
+import { CartStore } from '../../../../store/cart.store';
+import { MoodEmptyComponent } from '../../../../shared/components/svg/mood-empty.component';
 
 @Component({
   selector: 'app-product',
@@ -18,6 +19,7 @@ import { CartStore } from '../../../../store/project.store';
     CurrencyPipe,
     ButtonComponent,
     StarComponent,
+    MoodEmptyComponent,
   ],
   templateUrl: './product.component.html',
 })

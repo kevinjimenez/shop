@@ -1,6 +1,11 @@
+import { AbstractControl, ValidationErrors } from '@angular/forms';
+import { Regex } from './regex';
+
 const errorMessage: Record<string, string> = {
   required: 'El campo {{label}} es requerido',
   email: 'El campo {{label}} no es un correo valido',
+  password:
+    'El campo {{label}} debe tener al menos una minuscula, mayuscula, número, caracter especial y longitud sea mayor o igual a 4',
 };
 
 export class CustomValiationForm {
@@ -15,6 +20,18 @@ export class CustomValiationForm {
         return msg.replace('{{label}}', '');
       }
     }
+    return null;
+  }
+
+  static passwordValidator(
+    control: AbstractControl<string>
+  ): ValidationErrors | null {
+    const value = control.value;
+
+    if (!Regex.password.test(value)) {
+      return { password: true };
+    }
+
     return null;
   }
 }

@@ -1,12 +1,12 @@
 <section
   class="w-full flex flex-col items-center gap-x-2 border-2 border-main rounded p-1">
-  <picture
+  <a
     class="p-2 w-full bg-gray-50/80 rounded cursor-pointer"
     (click)="viewDetailsProduct(product())">
     <app-image
       [name]="product().image"
       customClass="size-36 w-full object-contain aspect-video image" />
-  </picture>
+  </a>
   <div class="w-full px-2">
     <span class="text-[0.6rem] text-paragraph font-light">
       {{ product().category | titlecase }}

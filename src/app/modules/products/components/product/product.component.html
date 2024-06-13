@@ -39,6 +39,9 @@
         [icon]="{ name: 'shopping-cart-plus.svg', left: true }" />
     </section>
   } @else {
-    <app-image name="empty.svg" />
+    <picture class="flex w-full flex-col items-center justify-center">
+      <app-mood-empty iconClass="size-56 sm:size-96 text-secundary" />
+      <span class="text-secundary text-3xl font-bold">Cargando...</span>
+    </picture>
   }
 </main>

@@ -1,44 +1,10 @@
 <mat-sidenav-container class="h-screen">
   <mat-sidenav #sidenav [mode]="mode()" position="end">
-    <main class="h-screen p-2">
-      <header
-        class="py-3 px-4 relative flex items-center justify-between border-b-2">
-        <span class="text-xl text-center text-gray-900"> Shopping cart </span>
-        <app-button
-          (onClick)="sidenav.toggle()"
-          [icon]="{ name: 'arrows-minimize.svg' }"
-          color="" />
-      </header>
-      <section class="px-3 pt-3 pb-1 overflow-y-auto">
-        <ul class="w-full">
-          @for (product of cartStore.products(); track $index) {
-            <li class="w-full flex items-center justify-center gap-x-2 py-2">
-              <app-image [name]="product.image" customClass="size-10" />
-              <article class="flex-1">
-                <p class="text-paragraph text-xs">{{ product.title }}</p>
-                <span class="flex items-baseline justify-between gap-x-5">
-                  <p class="text-neutral-400 text-[0.75rem]">
-                    Ind: {{ product.price | currency }}
-                  </p>
-                  <p class="text-paragraph text-sm my-0.5">
-                    {{ 0.0 | currency }}
-                  </p>
-                </span>
-              </article>
-              <app-button [icon]="{ name: 'trash-x.svg' }" color="" />
-            </li>
-          } @empty {
-            <app-shopping-cart-off
-              continerClass="flex justify-center items-center"
-              iconClass="size-16" />
-          }
-        </ul>
-      </section>
-    </main>
+    <app-cart-modal (onClose)="sidenav.toggle()" />
   </mat-sidenav>
 
   <mat-sidenav-content class="bg-background">
-    <app-header class="sticky top-0 z-10" (openCart)="sidenav.toggle()" />
+    <app-header class="sticky top-0 z-10" (showCart)="sidenav.toggle()" />
     <router-outlet />
   </mat-sidenav-content>
 </mat-sidenav-container>

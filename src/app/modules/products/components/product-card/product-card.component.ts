@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { Product } from '../../../../core/models/product.model';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { ImageComponent } from '../../../../shared/components/image/image.component';
-import { CartStore } from '../../../../store/project.store';
+import { CartStore } from '../../../../store/cart.store';
 import { ProductQuantityComponent } from '../../modals/product-quantity/product-quantity.component';
 
 @Component({

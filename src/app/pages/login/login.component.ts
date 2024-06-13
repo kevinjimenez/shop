@@ -10,6 +10,7 @@ import { AuthService } from '../../core/services/auth.service';
 import { ButtonComponent } from '../../shared/components/button/button.component';
 import { ImageComponent } from '../../shared/components/image/image.component';
 import { InputComponent } from '../../shared/components/input/input.component';
+import { CustomValiationForm } from '../../utils/custom-validation-form';
 
 @Component({
   selector: 'app-login',
@@ -32,7 +33,10 @@ export default class LoginComponent {
 
   public loginForm = this.formBuilder.group({
     username: ['', Validators.required],
-    password: ['', [Validators.required]],
+    password: [
+      '',
+      [Validators.required, CustomValiationForm.passwordValidator],
+    ],
   });
 
   redirecToHome() {

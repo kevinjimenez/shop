@@ -1,17 +1,17 @@
 @if (!hasError().error) {
   <main class="w-full flex flex-col items-center justify-center p-2">
     <section class="w-full flex flex-wrap gap-2 px-3">
-      <span
+      <a
         class="rounded-full px-2 py-0.5 text-xs bg-main cursor-pointer text-paragraph"
         (click)="changeCategory()">
         All
-      </span>
+      </a>
       @for (category of categories(); track $index) {
-        <span
+        <a
           (click)="changeCategory(category)"
           class="rounded-full px-2 py-0.5 text-xs bg-main cursor-pointer text-paragraph">
           {{ category | titlecase }}
-        </span>
+        </a>
       }
     </section>
     <section class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-2">
@@ -19,7 +19,7 @@
         <app-product-card [product]="product" />
       } @empty {
         <section class="col-span-3 place-self-center w-full text-center">
-          <app-mood-empty iconClass="size-56 sm:size-96 text-red-500" />
+          <app-mood-empty iconClass="size-56 sm:size-96 text-secundary" />
         </section>
       }
     </section>

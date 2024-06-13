@@ -33,6 +33,7 @@ export class ProductsComponent {
 
   public hasError = signal({ error: false, message: '' });
   public products = signal<Product[]>([]);
+  public seletedCategory = signal<string | undefined>(undefined);
   public limit = signal<number>(5);
 
   public categories = toSignal(
@@ -54,9 +55,10 @@ export class ProductsComponent {
   }
 
   changeCategory(category?: string) {
+    this.seletedCategory.set(category);
     this.products.update(() => []);
     this.productsService
-      .getByCategory(category)
+      .getByCategory({ category })
       .pipe(
         catchError((error: ErrorResponse) => {
           this.hasError.set({ error: true, message: error.message });
@@ -74,7 +76,10 @@ export class ProductsComponent {
     this.limit.update(cunrrent => cunrrent + 5);
 
     this.productsService
-      .getAll(this.limit())
+      .getByCategory({
+        category: this.seletedCategory(),
+        limit: this.limit(),
+      })
       .pipe(
         catchError((error: ErrorResponse) => {
           this.hasError.set({ error: true, message: error.message });
