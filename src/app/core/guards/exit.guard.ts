@@ -12,7 +12,6 @@ export const exitGuard: CanDeactivateFn<CanComponentDeactive> = (
   currentState,
   nextState
 ) => {
-  console.log({ component, currentRoute, currentState, nextState });
   const formularioValido = component.canDeactivate();
 
   if (formularioValido) {

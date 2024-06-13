@@ -32,7 +32,7 @@ export class ProductCardComponent {
     dialogRef.closed.subscribe(output => {
       if (!output) return;
       if (output <= 0) return;
-      console.log({ output });
+
       for (let i = 0; i < output; i++) {
         const cloneProduct = Object.assign({}, product);
         this.cartStore.addToCart(cloneProduct);

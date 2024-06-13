@@ -11,10 +11,7 @@ export class ConfirmModals {
       width: '500px',
     });
 
-    const close = dialogRef.closed.pipe(
-      tap(result => console.log({ result })),
-      switchMap(result => of(!!result))
-    );
+    const close = dialogRef.closed.pipe(switchMap(result => of(!!result)));
 
     return close;
   }
